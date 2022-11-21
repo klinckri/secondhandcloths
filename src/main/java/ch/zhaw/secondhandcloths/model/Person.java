@@ -1,7 +1,8 @@
 package ch.zhaw.secondhandcloths.model;
 
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
@@ -10,18 +11,25 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Document("person")
 public class Person {
 
     @Id
     private String id;
+    @NonNull
     private String vorname;
+    @NonNull
     private String nachname;
+    @NonNull
     private String email;
+    @NonNull
     private String strasse;
-    private int plz;
+    @NonNull
+    private Integer plz;
+    @NonNull
     private String ort;
+    @NonNull
     private String passwort;
 
 }
