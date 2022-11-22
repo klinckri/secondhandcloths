@@ -15,5 +15,5 @@ public class PersonDTO {
     private int plz;
     private String ort;
     private String passwort;
-
+    private String passwortWiederholen;
 }
