@@ -26,7 +26,7 @@ public class PersonControllerTest {
     @Test
     void testCreatePerson() throws Exception{
         PersonDTO personDTO = new PersonDTO("Kristina", "Klincov", 
-        "kristinaklincov@gmail.com", "Bahnhofstrasse 2", 8001, "Zürich", "alsdjfaf");
+        "kristinaklincov@gmail.com", "Bahnhofstrasse 2", 8001, "Zürich", "alsdjfaf", "alsdjfaf");
         ObjectMapper mapper = new ObjectMapper();
         mockMvc.perform(post("/api/person/registrieren")
                 .contentType("application/json")
