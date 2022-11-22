@@ -1,9 +1,11 @@
 package ch.zhaw.secondhandcloths.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 public class PersonDTO {
     private String vorname;
