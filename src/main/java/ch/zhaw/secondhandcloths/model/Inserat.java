@@ -26,5 +26,7 @@ public class Inserat {
     @NonNull
     private String iban;
     @NonNull
-    private String personId;
+    private KategorieEnum kategorie;
+    @NonNull
+    private Person personId;
 }

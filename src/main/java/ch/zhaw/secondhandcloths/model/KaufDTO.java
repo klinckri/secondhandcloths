@@ -9,8 +9,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 public class KaufDTO {
+    private String personId;
     private String kartennummer;
     private String datum;
     private int cvv;
-    private List<Inserat> inserate = new ArrayList<>();
+    private List<String> inserate = new ArrayList<>();
 }
