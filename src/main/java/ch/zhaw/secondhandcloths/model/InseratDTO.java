@@ -10,5 +10,6 @@ public class InseratDTO {
     private String beschreibung;
     private double preis;
     private String iban;
+    private KategorieEnum kategorie;
     private String personId;
 }
