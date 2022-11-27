@@ -5,12 +5,6 @@
     const api_root = "http://localhost:8080";
 
     let inserate = [];
-    let inserat = {
-        titel: null,
-        beschreibung: null,
-        preis: null,
-        kategorie: null,
-    }
 
     $: {
         getInserate();
@@ -25,7 +19,7 @@
 
         axios(config)
             .then(function (response) {
-                inserate = response.data.content;
+                inserate = response.data;
             })
             .catch(function (error) {
                 alert("Could not get Inserate");
@@ -37,23 +31,22 @@
 <h1>Welcome to Second Hand Cloths!</h1>
 
 <h2>Alle Inserate</h2>
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Titel</th>
-            <th scope="col">Beschreibung</th>
-            <th scope="col">Preis</th>
-            <th scope="col">Kategorie</th>
-        </tr>
-    </thead>
-    <tbody>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    
         {#each inserate as inserat}
-            <tr>
-                <td>{inserat.titel}</td>
-                <td>{inserat.beschreibung}</td>
-                <td>{inserat.preis}</td>
-                <td>{inserat.kategorie}</td>
-            </tr>
+        <div class="col">
+            <div class="card" style="width: 27rem;">
+                <img src="" class="card-img-top" alt="" />
+                <div class="card-body">
+                    <h5 class="card-title">{inserat.titel}</h5>
+                    <p class="card-text">{inserat.beschreibung}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{inserat.preis}</li>
+                    <li class="list-group-item">{inserat.kategorie}</li>
+                </ul>
+            </div>
+        </div>
         {/each}
-    </tbody>
-</table>
+</div>
