@@ -9,8 +9,32 @@
         preis: null,
         iban: null,
         kategorie: null,
-        personId: '637c6673498da731157c71c8',
+        personId: "637c6673498da731157c71c8",
+        file: null,
     };
+
+    let input;
+    let container;
+    let image;
+    let placeholder;
+    let showImage = false;
+
+    function onChange() {
+        const file = input.files[0];
+
+        if (file) {
+            showImage = true;
+
+            const reader = new FileReader();
+            reader.addEventListener("load", function () {
+                image.setAttribute("src", reader.result);
+            });
+            reader.readAsDataURL(file);
+            inserat.file = file;
+            return;
+        }
+        showImage = false;
+    }
 
     function inserieren() {
         var config = {
@@ -25,7 +49,7 @@
         axios(config)
             .then(function (response) {
                 alert("Inserat wurde erstellt");
-                window.location.href = '#/home';
+                window.location.href = "#/home";
             })
             .catch(function (error) {
                 alert("Inserat konnte nicht erstellt werden");
@@ -99,7 +123,6 @@
                 <option value="UNTERWAESCHE">UNTERWAESCHE</option>
                 <option value="SCHUHE">SCHUHE</option>
                 <option value="ANDERE">ANDERE</option>
-
             </select>
         </div>
         <div class="col">
@@ -110,6 +133,17 @@
                 id="person"
                 type="text"
             />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="form-label" for="bild">Bild hochladen</label>
+        <input bind:this={input} on:change={onChange} type="file" />
+        <div bind:this={container}>
+            {#if showImage}
+                <img bind:this={image} src="" alt="Preview" />
+            {:else}
+                <span bind:this={placeholder}>Bildvorschau</span>
+            {/if}
         </div>
     </div>
     <button type="button" class="btn btn-primary" on:click={inserieren}>Erstellen</button>
