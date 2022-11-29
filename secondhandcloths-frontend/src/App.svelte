@@ -1,6 +1,8 @@
 <script>
 	import Router from "svelte-spa-router";
 	import routes from "./routes";
+	import { isAuthenticated, user } from "./store";
+	import auth from "./auth.service";
 </script>
 
 <div id="app">
@@ -21,16 +23,41 @@
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav">
 					<li class="nav-item">
-						<a
-							class="nav-link"
-							aria-current="page"
-							href="#/home">Second Hand Cloths</a
+						<a class="nav-link" aria-current="page" href="#/home"
+							>Second Hand Cloths</a
 						>
 					</li>
 				</ul>
 			</div>
-			<div class="collapse navbar-collapse" id="navbarNav">
-				<a class="btn btn-outline-primary" href="#/inseratErstellen" role="button">Inserat erstellen</a>
+			{#if $isAuthenticated}
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<a
+						class="btn btn-outline-primary"
+						href="#/inseratErstellen"
+						role="button">Inserat erstellen</a
+					>
+				</div>
+			{/if}
+			{#if $isAuthenticated}
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<a class="nav-link" aria-current="page" href="#/account">Account</a>
+				</div>
+			{/if}
+			<div class="d-flex">
+				{#if $isAuthenticated}
+					<span class="navbar-text me-2"> {$user.name} </span>
+					<button
+						type="button"
+						class="btn btn-primary"
+						on:click={auth.logout}>Log Out</button
+					>
+				{:else}
+					<button
+						type="button"
+						class="btn btn-primary"
+						on:click={auth.loginWithPopup}>Log In</button
+					>
+				{/if}
 			</div>
 		</div>
 	</nav>

@@ -1,5 +1,7 @@
 package ch.zhaw.secondhandcloths.model;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,4 +16,5 @@ public class InseratDTO {
     private String iban;
     private KategorieEnum kategorie;
     private String personId;
+    private MultipartFile file;
 }
