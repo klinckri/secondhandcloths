@@ -27,7 +27,7 @@ public class InseratControllerTest {
     @Test
     void testCreateInserat() throws Exception{
         InseratDTO inseratDTO = new InseratDTO("Test Inserat", "Inserat fürs Integration Testing", 
-        15.40, "CH41 5678 9876 23", KategorieEnum.ANDERE, "637c6673498da731157c71c8", null);
+        15.40, "CH41 5678 9876 23", KategorieEnum.ANDERE, "637c6673498da731157c71c8");
         ObjectMapper mapper = new ObjectMapper();
         mockMvc.perform(post("/api/inserat/inserieren")
                 .contentType("application/json")

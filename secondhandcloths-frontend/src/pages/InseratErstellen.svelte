@@ -2,7 +2,6 @@
     import axios from "axios";
 
     const api_root = "http://localhost:8080";
-
     let inserat = {
         titel: null,
         beschreibung: null,
@@ -10,38 +9,29 @@
         iban: null,
         kategorie: null,
         personId: "637c6673498da731157c71c8",
-        file: null,
     };
 
-    let input;
-    let container;
-    let image;
-    let placeholder;
-    let showImage = false;
+    let file;
 
     function onChange() {
-        const file = input.files[0];
-
         if (file) {
             showImage = true;
-
             const reader = new FileReader();
             reader.addEventListener("load", function () {
                 image.setAttribute("src", reader.result);
             });
             reader.readAsDataURL(file);
-            inserat.file = file;
             return;
         }
-        showImage = false;
+        showIm
+        age = false;
     }
-
     function inserieren() {
         var config = {
             method: "post",
-            url: api_root + "/api/inserat/inserieren",
+            url: api_root + "/api/inserat/inserieren?file="+file,
             headers: {
-                "Content-Type": "application/json",
+                "Content-Type": "multipart/form-data",
             },
             data: inserat,
         };
@@ -137,14 +127,7 @@
     </div>
     <div class="row mb-3">
         <label class="form-label" for="bild">Bild hochladen</label>
-        <input bind:this={input} on:change={onChange} type="file" />
-        <div bind:this={container}>
-            {#if showImage}
-                <img bind:this={image} src="" alt="Preview" />
-            {:else}
-                <span bind:this={placeholder}>Bildvorschau</span>
-            {/if}
-        </div>
+        <input bind:this={file} type="file" />
     </div>
     <button type="button" class="btn btn-primary" on:click={inserieren}>Erstellen</button>
 </form>
