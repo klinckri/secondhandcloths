@@ -1,5 +1,5 @@
 
-(function(l, r) { if (!l || l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (self.location.host || 'localhost').split(':')[0] + ':35730/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(self.document);
+(function(l, r) { if (!l || l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (self.location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(self.document);
 var app = (function () {
     'use strict';
 
@@ -4752,22 +4752,22 @@ var app = (function () {
     			t8 = space();
     			if (if_block) if_block.c();
     			t9 = space();
-    			if (!src_url_equal(img.src, img_src_value = "")) attr_dev(img, "src", img_src_value);
+    			if (!src_url_equal(img.src, img_src_value = "pictures/" + /*inserat*/ ctx[4].filename)) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "class", "card-img-top");
-    			attr_dev(img, "alt", "");
+    			attr_dev(img, "alt", "inserat");
     			add_location(img, file$3, 55, 20, 1415);
     			attr_dev(h5, "class", "card-title");
-    			add_location(h5, file$3, 57, 24, 1526);
+    			add_location(h5, file$3, 57, 24, 1560);
     			attr_dev(p, "class", "card-text");
-    			add_location(p, file$3, 58, 24, 1594);
+    			add_location(p, file$3, 58, 24, 1628);
     			attr_dev(div0, "class", "card-body");
-    			add_location(div0, file$3, 56, 20, 1478);
+    			add_location(div0, file$3, 56, 20, 1512);
     			attr_dev(li0, "class", "list-group-item");
-    			add_location(li0, file$3, 61, 24, 1754);
+    			add_location(li0, file$3, 61, 24, 1788);
     			attr_dev(li1, "class", "list-group-item");
-    			add_location(li1, file$3, 62, 24, 1827);
+    			add_location(li1, file$3, 62, 24, 1861);
     			attr_dev(ul, "class", "list-group list-group-flush");
-    			add_location(ul, file$3, 60, 20, 1689);
+    			add_location(ul, file$3, 60, 20, 1723);
     			attr_dev(div1, "class", "card");
     			set_style(div1, "width", "27rem");
     			add_location(div1, file$3, 54, 16, 1354);
@@ -4797,6 +4797,10 @@ var app = (function () {
     			append_dev(div2, t9);
     		},
     		p: function update(ctx, dirty) {
+    			if (dirty & /*inserate*/ 1 && !src_url_equal(img.src, img_src_value = "pictures/" + /*inserat*/ ctx[4].filename)) {
+    				attr_dev(img, "src", img_src_value);
+    			}
+
     			if (dirty & /*inserate*/ 1 && t1_value !== (t1_value = /*inserat*/ ctx[4].titel + "")) set_data_dev(t1, t1_value);
     			if (dirty & /*inserate*/ 1 && t3_value !== (t3_value = /*inserat*/ ctx[4].beschreibung + "")) set_data_dev(t3, t3_value);
     			if (dirty & /*inserate*/ 1 && t5_value !== (t5_value = /*inserat*/ ctx[4].preis + "")) set_data_dev(t5, t5_value);
@@ -4852,19 +4856,19 @@ var app = (function () {
     			path1 = svg_element("path");
     			t = text(" Warenkorb");
     			attr_dev(path0, "d", "M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z");
-    			add_location(path0, file$3, 65, 32, 2185);
+    			add_location(path0, file$3, 65, 32, 2219);
     			attr_dev(path1, "d", "M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z");
-    			add_location(path1, file$3, 66, 32, 2321);
+    			add_location(path1, file$3, 66, 32, 2355);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "width", "16");
     			attr_dev(svg, "height", "16");
     			attr_dev(svg, "fill", "currentColor");
     			attr_dev(svg, "class", "bi bi-cart-plus");
     			attr_dev(svg, "viewBox", "0 0 16 16");
-    			add_location(svg, file$3, 64, 98, 2025);
-    			add_location(button, file$3, 64, 56, 1983);
+    			add_location(svg, file$3, 64, 98, 2059);
+    			add_location(button, file$3, 64, 56, 2017);
     			attr_dev(li, "class", "list-group-item");
-    			add_location(li, file$3, 64, 28, 1955);
+    			add_location(li, file$3, 64, 28, 1989);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, li, anchor);
@@ -5737,37 +5741,37 @@ var app = (function () {
     			path1 = svg_element("path");
     			t9 = text(" Inserat löschen");
     			t10 = space();
-    			if (!src_url_equal(img.src, img_src_value = "")) attr_dev(img, "src", img_src_value);
+    			if (!src_url_equal(img.src, img_src_value = "pictures/" + /*inserat*/ ctx[6].filename)) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "class", "card-img-top");
     			attr_dev(img, "alt", "");
     			add_location(img, file_1, 61, 16, 1552);
     			attr_dev(h5, "class", "card-title");
-    			add_location(h5, file_1, 63, 20, 1655);
+    			add_location(h5, file_1, 63, 20, 1682);
     			attr_dev(p, "class", "card-text");
-    			add_location(p, file_1, 64, 20, 1719);
+    			add_location(p, file_1, 64, 20, 1746);
     			attr_dev(div0, "class", "card-body");
-    			add_location(div0, file_1, 62, 16, 1611);
+    			add_location(div0, file_1, 62, 16, 1638);
     			attr_dev(li0, "class", "list-group-item");
-    			add_location(li0, file_1, 67, 20, 1867);
+    			add_location(li0, file_1, 67, 20, 1894);
     			attr_dev(li1, "class", "list-group-item");
-    			add_location(li1, file_1, 68, 20, 1936);
+    			add_location(li1, file_1, 68, 20, 1963);
     			attr_dev(path0, "d", "M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z");
-    			add_location(path0, file_1, 72, 32, 2293);
+    			add_location(path0, file_1, 72, 32, 2320);
     			attr_dev(path1, "fill-rule", "evenodd");
     			attr_dev(path1, "d", "M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z");
-    			add_location(path1, file_1, 73, 32, 2498);
+    			add_location(path1, file_1, 73, 32, 2525);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "width", "16");
     			attr_dev(svg, "height", "16");
     			attr_dev(svg, "fill", "currentColor");
     			attr_dev(svg, "class", "bi bi-trash");
     			attr_dev(svg, "viewBox", "0 0 16 16");
-    			add_location(svg, file_1, 71, 28, 2136);
-    			add_location(button, file_1, 70, 24, 2062);
+    			add_location(svg, file_1, 71, 28, 2163);
+    			add_location(button, file_1, 70, 24, 2089);
     			attr_dev(li2, "class", "list-group-item");
-    			add_location(li2, file_1, 69, 20, 2009);
+    			add_location(li2, file_1, 69, 20, 2036);
     			attr_dev(ul, "class", "list-group list-group-flush");
-    			add_location(ul, file_1, 66, 16, 1806);
+    			add_location(ul, file_1, 66, 16, 1833);
     			attr_dev(div1, "class", "card");
     			set_style(div1, "width", "27rem");
     			add_location(div1, file_1, 60, 12, 1495);
@@ -5818,6 +5822,11 @@ var app = (function () {
     		},
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
+
+    			if (dirty & /*inserate*/ 1 && !src_url_equal(img.src, img_src_value = "pictures/" + /*inserat*/ ctx[6].filename)) {
+    				attr_dev(img, "src", img_src_value);
+    			}
+
     			if (dirty & /*inserate*/ 1 && t1_value !== (t1_value = /*inserat*/ ctx[6].titel + "")) set_data_dev(t1, t1_value);
     			if (dirty & /*inserate*/ 1 && t3_value !== (t3_value = /*inserat*/ ctx[6].beschreibung + "")) set_data_dev(t3, t3_value);
     			if (dirty & /*inserate*/ 1 && t5_value !== (t5_value = /*inserat*/ ctx[6].preis + "")) set_data_dev(t5, t5_value);
