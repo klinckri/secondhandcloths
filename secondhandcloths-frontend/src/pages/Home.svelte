@@ -1,10 +1,12 @@
 <script>
     import axios from "axios";
+    import { insert } from "svelte/internal";
 
     // TODO: Setze hier die URL zu deinem mit Postman erstellten Mock Server
     const api_root = "http://localhost:8080";
 
     let inserate = [];
+    let fileOutput;
 
     $: {
         getInserate();
@@ -26,6 +28,7 @@
                 console.log(error);
             });
     }
+
 </script>
 
 <h1>Welcome to Second Hand Cloths!</h1>
@@ -37,7 +40,7 @@
         {#each inserate as inserat}
         <div class="col">
             <div class="card" style="width: 27rem;">
-                <img src="" class="card-img-top" alt="" />
+                <img src={inserate.file} class="card-img-top" alt="" />
                 <div class="card-body">
                     <h5 class="card-title">{inserat.titel}</h5>
                     <p class="card-text">{inserat.beschreibung}</p>

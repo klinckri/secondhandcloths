@@ -11,29 +11,22 @@
         personId: "637c6673498da731157c71c8",
     };
 
-    let file;
+    let input;
+    let formData = new FormData();
 
-    function onChange() {
-        if (file) {
-            showImage = true;
-            const reader = new FileReader();
-            reader.addEventListener("load", function () {
-                image.setAttribute("src", reader.result);
-            });
-            reader.readAsDataURL(file);
-            return;
-        }
-        showIm
-        age = false;
-    }
     function inserieren() {
+        formData.append('titel', inserat.titel)
+        formData.append('beschreibung', inserat.beschreibung)
+        formData.append('preis', inserat.preis)
+        formData.append('iban', inserat.iban)
+        formData.append('kategorie', inserat.kategorie)
+        formData.append('personId', inserat.personId)
+
         var config = {
             method: "post",
-            url: api_root + "/api/inserat/inserieren?file="+file,
-            headers: {
-                "Content-Type": "multipart/form-data",
-            },
-            data: inserat,
+            url: api_root + "/api/inserat/inserieren",
+            headers: {},
+            data: formData,
         };
 
         axios(config)
@@ -45,6 +38,18 @@
                 alert("Inserat konnte nicht erstellt werden");
                 console.log(error);
             });
+    }
+
+    function uploadImage(e) {
+        var image = e.target.files[0];
+        var avatar;
+            var reader = new FileReader();
+            reader.readAsDataURL(image);
+            reader.onload = e => {
+                 avatar = e.target.result
+            };
+        
+        formData.append('file', image);
     }
 </script>
 
@@ -127,7 +132,7 @@
     </div>
     <div class="row mb-3">
         <label class="form-label" for="bild">Bild hochladen</label>
-        <input bind:this={file} type="file" />
+        <input bind:this={input} type="file" id="file" accept=".jpg, .jpeg, .png" on:change={(e)=>uploadImage(e)}/>
     </div>
     <button type="button" class="btn btn-primary" on:click={inserieren}>Erstellen</button>
 </form>
