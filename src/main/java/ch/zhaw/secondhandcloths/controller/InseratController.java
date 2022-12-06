@@ -33,13 +33,14 @@ public class InseratController {
     @PostMapping(value = "/inserieren")
     public ResponseEntity<Inserat> createInserat(
             @RequestBody InseratDTO inseratDTO) throws IOException {
-                Optional<Person> person = personRepository.findById(inseratDTO.getPersonId());
-                if(person.isPresent()) {
-                    Inserat inserat = new Inserat(inseratDTO.getTitel(), inseratDTO.getBeschreibung(), inseratDTO.getPreis(), inseratDTO.getIban(), inseratDTO.getKategorie(), person.get());
-                    Inserat savedInserat = inseratRepository.save(inserat);
-                    return new ResponseEntity<>(savedInserat, HttpStatus.CREATED);
-                }
-                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        Optional<Person> person = personRepository.findById(inseratDTO.getPersonId());
+        if (person.isPresent()) {
+            Inserat inserat = new Inserat(inseratDTO.getTitel(), inseratDTO.getBeschreibung(), inseratDTO.getPreis(),
+                    inseratDTO.getIban(), inseratDTO.getKategorie(), person.get());
+            Inserat savedInserat = inseratRepository.save(inserat);
+            return new ResponseEntity<>(savedInserat, HttpStatus.CREATED);
+        }
+        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @GetMapping("/home")
@@ -57,7 +58,7 @@ public class InseratController {
     @GetMapping("/artikel/{id}")
     public ResponseEntity<Inserat> getArtikel(@PathVariable String id) {
         Optional<Inserat> inserat = inseratRepository.findById(id);
-        if(inserat.isPresent()) {
+        if (inserat.isPresent()) {
             return new ResponseEntity<>(inserat.get(), HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
