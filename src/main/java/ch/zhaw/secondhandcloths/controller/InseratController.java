@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
 import ch.zhaw.secondhandcloths.model.Inserat;
 import ch.zhaw.secondhandcloths.model.InseratDTO;
@@ -36,9 +35,7 @@ public class InseratController {
             @RequestBody InseratDTO inseratDTO) throws IOException {
                 Optional<Person> person = personRepository.findById(inseratDTO.getPersonId());
                 if(person.isPresent()) {
-                    MultipartFile picture = inseratDTO.getFile();
-                    Inserat inserat = new Inserat(inseratDTO.getTitel(), inseratDTO.getBeschreibung(), inseratDTO.getPreis(), inseratDTO.getIban(), inseratDTO.getKategorie(), person.get(), 
-                    picture.getOriginalFilename(), picture.getContentType(), picture.getBytes());
+                    Inserat inserat = new Inserat(inseratDTO.getTitel(), inseratDTO.getBeschreibung(), inseratDTO.getPreis(), inseratDTO.getIban(), inseratDTO.getKategorie(), person.get());
                     Inserat savedInserat = inseratRepository.save(inserat);
                     return new ResponseEntity<>(savedInserat, HttpStatus.CREATED);
                 }

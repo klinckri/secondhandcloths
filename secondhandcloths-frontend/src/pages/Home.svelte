@@ -33,20 +33,21 @@
 <h2>Alle Inserate</h2>
 
 <div class="row row-cols-1 row-cols-md-3 g-4">
-    
-        {#each inserate as inserat}
-        <div class="col">
-            <div class="card" style="width: 27rem;">
-                <img src="" class="card-img-top" alt="" />
-                <div class="card-body">
-                    <h5 class="card-title">{inserat.titel}</h5>
-                    <p class="card-text">{inserat.beschreibung}</p>
+    {#each inserate as inserat}
+        {#if inserat.inseratState == "INSERIERT"}
+            <div class="col">
+                <div class="card" style="width: 27rem;">
+                    <img src="" class="card-img-top" alt="" />
+                    <div class="card-body">
+                        <h5 class="card-title">{inserat.titel}</h5>
+                        <p class="card-text">{inserat.beschreibung}</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">{inserat.preis}</li>
+                        <li class="list-group-item">{inserat.kategorie}</li>
+                    </ul>
                 </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">{inserat.preis}</li>
-                    <li class="list-group-item">{inserat.kategorie}</li>
-                </ul>
             </div>
-        </div>
-        {/each}
+        {/if}
+    {/each}
 </div>
