@@ -4,9 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -24,7 +22,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ch.zhaw.secondhandcloths.model.Inserat;
 import ch.zhaw.secondhandcloths.model.InseratDTO;
-import ch.zhaw.secondhandcloths.model.InseratOutput;
 import ch.zhaw.secondhandcloths.model.KategorieEnum;
 import ch.zhaw.secondhandcloths.model.Person;
 import ch.zhaw.secondhandcloths.repository.InseratRepository;
@@ -47,7 +44,7 @@ public class InseratController {
             //file
             String pictureID = UUID.randomUUID().toString();
             String type = inseratDTO.getFile().getContentType().replace("image/", "");
-            Path path = Paths.get("src/main/resources/pictures");
+            Path path = Paths.get("src/main/resources/static/pictures");
             
             //File filename = new File(path + pictureID);
             FileUtils.writeByteArrayToFile(new File(path + "/" + pictureID + "." + type), inseratDTO.getFile().getBytes());
@@ -63,18 +60,9 @@ public class InseratController {
     }
 
     @GetMapping("/home")
-    public ResponseEntity<List<InseratOutput>> getAllInserate() {
+    public ResponseEntity<List<Inserat>> getAllInserate() {
         List<Inserat> inserate = inseratRepository.findAll();
-        List<InseratOutput> iOutputs = new ArrayList<>();
-        for(Inserat i : inserate) {
-            File file = null;
-            if(Objects.nonNull(i.getFilename())) {
-                Path path = Paths.get("src/main/resources/pictures/" + i.getFilename());
-                file = path.toFile();
-            }
-            iOutputs.add(new InseratOutput(i.getId(), i.getTitel(), i.getBeschreibung(), i.getPreis(), i.getIban(), i.getKategorie(), i.getPersonId(), file));
-        }
-        return new ResponseEntity<>(iOutputs, HttpStatus.OK);
+        return new ResponseEntity<>(inserate, HttpStatus.OK);
     }
 
     @GetMapping("/home/{kategorie}")

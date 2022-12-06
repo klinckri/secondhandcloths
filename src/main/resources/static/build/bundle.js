@@ -1,5 +1,5 @@
 
-(function(l, r) { if (!l || l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (self.location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(self.document);
+(function(l, r) { if (!l || l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (self.location.host || 'localhost').split(':')[0] + ':35730/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(self.document);
 var app = (function () {
     'use strict';
 
@@ -4694,11 +4694,11 @@ var app = (function () {
 
     function get_each_context$1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[3] = list[i];
+    	child_ctx[2] = list[i];
     	return child_ctx;
     }
 
-    // (40:8) {#each inserate as inserat}
+    // (38:8) {#each inserate as inserat}
     function create_each_block$1(ctx) {
     	let div2;
     	let div1;
@@ -4707,20 +4707,20 @@ var app = (function () {
     	let t0;
     	let div0;
     	let h5;
-    	let t1_value = /*inserat*/ ctx[3].titel + "";
+    	let t1_value = /*inserat*/ ctx[2].titel + "";
     	let t1;
     	let t2;
     	let p;
-    	let t3_value = /*inserat*/ ctx[3].beschreibung + "";
+    	let t3_value = /*inserat*/ ctx[2].beschreibung + "";
     	let t3;
     	let t4;
     	let ul;
     	let li0;
-    	let t5_value = /*inserat*/ ctx[3].preis + "";
+    	let t5_value = /*inserat*/ ctx[2].preis + "";
     	let t5;
     	let t6;
     	let li1;
-    	let t7_value = /*inserat*/ ctx[3].kategorie + "";
+    	let t7_value = /*inserat*/ ctx[2].kategorie + "";
     	let t7;
     	let t8;
 
@@ -4744,27 +4744,27 @@ var app = (function () {
     			li1 = element("li");
     			t7 = text(t7_value);
     			t8 = space();
-    			if (!src_url_equal(img.src, img_src_value = /*inserate*/ ctx[0].file)) attr_dev(img, "src", img_src_value);
+    			if (!src_url_equal(img.src, img_src_value = "pictures/" + /*inserat*/ ctx[2].filename)) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "class", "card-img-top");
     			attr_dev(img, "alt", "");
-    			add_location(img, file$2, 42, 16, 983);
+    			add_location(img, file$2, 40, 16, 917);
     			attr_dev(h5, "class", "card-title");
-    			add_location(h5, file$2, 44, 20, 1099);
+    			add_location(h5, file$2, 42, 20, 1047);
     			attr_dev(p, "class", "card-text");
-    			add_location(p, file$2, 45, 20, 1163);
+    			add_location(p, file$2, 43, 20, 1111);
     			attr_dev(div0, "class", "card-body");
-    			add_location(div0, file$2, 43, 16, 1055);
+    			add_location(div0, file$2, 41, 16, 1003);
     			attr_dev(li0, "class", "list-group-item");
-    			add_location(li0, file$2, 48, 20, 1311);
+    			add_location(li0, file$2, 46, 20, 1259);
     			attr_dev(li1, "class", "list-group-item");
-    			add_location(li1, file$2, 49, 20, 1380);
+    			add_location(li1, file$2, 47, 20, 1328);
     			attr_dev(ul, "class", "list-group list-group-flush");
-    			add_location(ul, file$2, 47, 16, 1250);
+    			add_location(ul, file$2, 45, 16, 1198);
     			attr_dev(div1, "class", "card");
     			set_style(div1, "width", "27rem");
-    			add_location(div1, file$2, 41, 12, 926);
+    			add_location(div1, file$2, 39, 12, 860);
     			attr_dev(div2, "class", "col");
-    			add_location(div2, file$2, 40, 8, 896);
+    			add_location(div2, file$2, 38, 8, 830);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -4787,14 +4787,14 @@ var app = (function () {
     			append_dev(div2, t8);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*inserate*/ 1 && !src_url_equal(img.src, img_src_value = /*inserate*/ ctx[0].file)) {
+    			if (dirty & /*inserate*/ 1 && !src_url_equal(img.src, img_src_value = "pictures/" + /*inserat*/ ctx[2].filename)) {
     				attr_dev(img, "src", img_src_value);
     			}
 
-    			if (dirty & /*inserate*/ 1 && t1_value !== (t1_value = /*inserat*/ ctx[3].titel + "")) set_data_dev(t1, t1_value);
-    			if (dirty & /*inserate*/ 1 && t3_value !== (t3_value = /*inserat*/ ctx[3].beschreibung + "")) set_data_dev(t3, t3_value);
-    			if (dirty & /*inserate*/ 1 && t5_value !== (t5_value = /*inserat*/ ctx[3].preis + "")) set_data_dev(t5, t5_value);
-    			if (dirty & /*inserate*/ 1 && t7_value !== (t7_value = /*inserat*/ ctx[3].kategorie + "")) set_data_dev(t7, t7_value);
+    			if (dirty & /*inserate*/ 1 && t1_value !== (t1_value = /*inserat*/ ctx[2].titel + "")) set_data_dev(t1, t1_value);
+    			if (dirty & /*inserate*/ 1 && t3_value !== (t3_value = /*inserat*/ ctx[2].beschreibung + "")) set_data_dev(t3, t3_value);
+    			if (dirty & /*inserate*/ 1 && t5_value !== (t5_value = /*inserat*/ ctx[2].preis + "")) set_data_dev(t5, t5_value);
+    			if (dirty & /*inserate*/ 1 && t7_value !== (t7_value = /*inserat*/ ctx[2].kategorie + "")) set_data_dev(t7, t7_value);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div2);
@@ -4805,7 +4805,7 @@ var app = (function () {
     		block,
     		id: create_each_block$1.name,
     		type: "each",
-    		source: "(40:8) {#each inserate as inserat}",
+    		source: "(38:8) {#each inserate as inserat}",
     		ctx
     	});
 
@@ -4840,10 +4840,10 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			add_location(h1, file$2, 33, 0, 735);
-    			add_location(h2, file$2, 35, 0, 776);
+    			add_location(h1, file$2, 31, 0, 669);
+    			add_location(h2, file$2, 33, 0, 710);
     			attr_dev(div, "class", "row row-cols-1 row-cols-md-3 g-4");
-    			add_location(div, file$2, 37, 0, 800);
+    			add_location(div, file$2, 35, 0, 734);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -4913,7 +4913,6 @@ var app = (function () {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('Home', slots, []);
     	let inserate = [];
-    	let fileOutput;
 
     	function getInserate() {
     		var config = {
@@ -4936,18 +4935,10 @@ var app = (function () {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console_1$2.warn(`<Home> was created with unknown prop '${key}'`);
     	});
 
-    	$$self.$capture_state = () => ({
-    		axios,
-    		insert,
-    		api_root: api_root$2,
-    		inserate,
-    		fileOutput,
-    		getInserate
-    	});
+    	$$self.$capture_state = () => ({ axios, api_root: api_root$2, inserate, getInserate });
 
     	$$self.$inject_state = $$props => {
     		if ('inserate' in $$props) $$invalidate(0, inserate = $$props.inserate);
-    		if ('fileOutput' in $$props) fileOutput = $$props.fileOutput;
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -5989,7 +5980,7 @@ var app = (function () {
     /* src/App.svelte generated by Svelte v3.53.1 */
     const file = "src/App.svelte";
 
-    // (32:3) {#if $isAuthenticated}
+    // (23:3) {#if $isAuthenticated}
     function create_if_block_2(ctx) {
     	let div;
     	let a;
@@ -6002,10 +5993,10 @@ var app = (function () {
     			attr_dev(a, "class", "btn btn-outline-primary");
     			attr_dev(a, "href", "#/inseratErstellen");
     			attr_dev(a, "role", "button");
-    			add_location(a, file, 33, 5, 932);
+    			add_location(a, file, 24, 5, 677);
     			attr_dev(div, "class", "collapse navbar-collapse");
     			attr_dev(div, "id", "navbarNav");
-    			add_location(div, file, 32, 4, 873);
+    			add_location(div, file, 23, 4, 618);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -6020,14 +6011,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(32:3) {#if $isAuthenticated}",
+    		source: "(23:3) {#if $isAuthenticated}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (41:3) {#if $isAuthenticated}
+    // (32:3) {#if $isAuthenticated}
     function create_if_block_1(ctx) {
     	let div;
     	let a;
@@ -6040,10 +6031,10 @@ var app = (function () {
     			attr_dev(a, "class", "nav-link");
     			attr_dev(a, "aria-current", "page");
     			attr_dev(a, "href", "#/account");
-    			add_location(a, file, 42, 5, 1162);
+    			add_location(a, file, 33, 5, 907);
     			attr_dev(div, "class", "collapse navbar-collapse");
     			attr_dev(div, "id", "navbarNav");
-    			add_location(div, file, 41, 4, 1103);
+    			add_location(div, file, 32, 4, 848);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -6058,14 +6049,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(41:3) {#if $isAuthenticated}",
+    		source: "(32:3) {#if $isAuthenticated}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (54:4) {:else}
+    // (45:4) {:else}
     function create_else_block(ctx) {
     	let button;
     	let mounted;
@@ -6077,7 +6068,7 @@ var app = (function () {
     			button.textContent = "Log In";
     			attr_dev(button, "type", "button");
     			attr_dev(button, "class", "btn btn-primary");
-    			add_location(button, file, 54, 5, 1492);
+    			add_location(button, file, 45, 5, 1237);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, button, anchor);
@@ -6099,14 +6090,14 @@ var app = (function () {
     		block,
     		id: create_else_block.name,
     		type: "else",
-    		source: "(54:4) {:else}",
+    		source: "(45:4) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (47:4) {#if $isAuthenticated}
+    // (38:4) {#if $isAuthenticated}
     function create_if_block(ctx) {
     	let span;
     	let t0_value = /*$user*/ ctx[1].name + "";
@@ -6124,10 +6115,10 @@ var app = (function () {
     			button = element("button");
     			button.textContent = "Log Out";
     			attr_dev(span, "class", "navbar-text me-2");
-    			add_location(span, file, 47, 5, 1307);
+    			add_location(span, file, 38, 5, 1052);
     			attr_dev(button, "type", "button");
     			attr_dev(button, "class", "btn btn-primary");
-    			add_location(button, file, 48, 5, 1365);
+    			add_location(button, file, 39, 5, 1110);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, span, anchor);
@@ -6156,7 +6147,7 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(47:4) {#if $isAuthenticated}",
+    		source: "(38:4) {#if $isAuthenticated}",
     		ctx
     	});
 
@@ -6164,24 +6155,19 @@ var app = (function () {
     }
 
     function create_fragment(ctx) {
-    	let div4;
+    	let div3;
     	let nav;
-    	let div2;
-    	let a0;
+    	let div1;
+    	let a;
     	let t1;
     	let button;
     	let span;
     	let t2;
-    	let div0;
-    	let ul;
-    	let li;
-    	let a1;
+    	let t3;
     	let t4;
+    	let div0;
     	let t5;
-    	let t6;
-    	let div1;
-    	let t7;
-    	let div3;
+    	let div2;
     	let router;
     	let current;
     	let if_block0 = /*$isAuthenticated*/ ctx[0] && create_if_block_2(ctx);
@@ -6198,35 +6184,29 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
-    			div4 = element("div");
+    			div3 = element("div");
     			nav = element("nav");
-    			div2 = element("div");
-    			a0 = element("a");
-    			a0.textContent = "Second Hand Cloths";
+    			div1 = element("div");
+    			a = element("a");
+    			a.textContent = "Home";
     			t1 = space();
     			button = element("button");
     			span = element("span");
     			t2 = space();
-    			div0 = element("div");
-    			ul = element("ul");
-    			li = element("li");
-    			a1 = element("a");
-    			a1.textContent = "Second Hand Cloths";
-    			t4 = space();
     			if (if_block0) if_block0.c();
-    			t5 = space();
+    			t3 = space();
     			if (if_block1) if_block1.c();
-    			t6 = space();
-    			div1 = element("div");
+    			t4 = space();
+    			div0 = element("div");
     			if_block2.c();
-    			t7 = space();
-    			div3 = element("div");
+    			t5 = space();
+    			div2 = element("div");
     			create_component(router.$$.fragment);
-    			attr_dev(a0, "class", "navbar-brand");
-    			attr_dev(a0, "href", "#/");
-    			add_location(a0, file, 10, 3, 277);
+    			attr_dev(a, "class", "navbar-brand");
+    			attr_dev(a, "href", "#/");
+    			add_location(a, file, 10, 3, 277);
     			attr_dev(span, "class", "navbar-toggler-icon");
-    			add_location(span, file, 20, 4, 552);
+    			add_location(span, file, 20, 4, 538);
     			attr_dev(button, "class", "navbar-toggler");
     			attr_dev(button, "type", "button");
     			attr_dev(button, "data-bs-toggle", "collapse");
@@ -6234,55 +6214,39 @@ var app = (function () {
     			attr_dev(button, "aria-controls", "navbarNav");
     			attr_dev(button, "aria-expanded", "false");
     			attr_dev(button, "aria-label", "Toggle navigation");
-    			add_location(button, file, 11, 3, 337);
-    			attr_dev(a1, "class", "nav-link");
-    			attr_dev(a1, "aria-current", "page");
-    			attr_dev(a1, "href", "#/home");
-    			add_location(a1, file, 25, 6, 720);
-    			attr_dev(li, "class", "nav-item");
-    			add_location(li, file, 24, 5, 692);
-    			attr_dev(ul, "class", "navbar-nav");
-    			add_location(ul, file, 23, 4, 663);
-    			attr_dev(div0, "class", "collapse navbar-collapse");
-    			attr_dev(div0, "id", "navbarNav");
-    			add_location(div0, file, 22, 3, 605);
-    			attr_dev(div1, "class", "d-flex");
-    			add_location(div1, file, 45, 3, 1254);
-    			attr_dev(div2, "class", "container-fluid");
-    			add_location(div2, file, 9, 2, 244);
+    			add_location(button, file, 11, 3, 323);
+    			attr_dev(div0, "class", "d-flex");
+    			add_location(div0, file, 36, 3, 999);
+    			attr_dev(div1, "class", "container-fluid");
+    			add_location(div1, file, 9, 2, 244);
     			attr_dev(nav, "class", "navbar navbar-expand-lg bg-light");
     			add_location(nav, file, 8, 1, 195);
-    			attr_dev(div3, "class", "container");
-    			add_location(div3, file, 64, 1, 1648);
-    			attr_dev(div4, "id", "app");
-    			add_location(div4, file, 7, 0, 179);
+    			attr_dev(div2, "class", "container");
+    			add_location(div2, file, 55, 1, 1393);
+    			attr_dev(div3, "id", "app");
+    			add_location(div3, file, 7, 0, 179);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div4, anchor);
-    			append_dev(div4, nav);
-    			append_dev(nav, div2);
-    			append_dev(div2, a0);
-    			append_dev(div2, t1);
-    			append_dev(div2, button);
+    			insert_dev(target, div3, anchor);
+    			append_dev(div3, nav);
+    			append_dev(nav, div1);
+    			append_dev(div1, a);
+    			append_dev(div1, t1);
+    			append_dev(div1, button);
     			append_dev(button, span);
-    			append_dev(div2, t2);
-    			append_dev(div2, div0);
-    			append_dev(div0, ul);
-    			append_dev(ul, li);
-    			append_dev(li, a1);
-    			append_dev(div2, t4);
-    			if (if_block0) if_block0.m(div2, null);
-    			append_dev(div2, t5);
-    			if (if_block1) if_block1.m(div2, null);
-    			append_dev(div2, t6);
-    			append_dev(div2, div1);
-    			if_block2.m(div1, null);
-    			append_dev(div4, t7);
-    			append_dev(div4, div3);
-    			mount_component(router, div3, null);
+    			append_dev(div1, t2);
+    			if (if_block0) if_block0.m(div1, null);
+    			append_dev(div1, t3);
+    			if (if_block1) if_block1.m(div1, null);
+    			append_dev(div1, t4);
+    			append_dev(div1, div0);
+    			if_block2.m(div0, null);
+    			append_dev(div3, t5);
+    			append_dev(div3, div2);
+    			mount_component(router, div2, null);
     			current = true;
     		},
     		p: function update(ctx, [dirty]) {
@@ -6290,7 +6254,7 @@ var app = (function () {
     				if (if_block0) ; else {
     					if_block0 = create_if_block_2(ctx);
     					if_block0.c();
-    					if_block0.m(div2, t5);
+    					if_block0.m(div1, t3);
     				}
     			} else if (if_block0) {
     				if_block0.d(1);
@@ -6301,7 +6265,7 @@ var app = (function () {
     				if (if_block1) ; else {
     					if_block1 = create_if_block_1(ctx);
     					if_block1.c();
-    					if_block1.m(div2, t6);
+    					if_block1.m(div1, t4);
     				}
     			} else if (if_block1) {
     				if_block1.d(1);
@@ -6316,7 +6280,7 @@ var app = (function () {
 
     				if (if_block2) {
     					if_block2.c();
-    					if_block2.m(div1, null);
+    					if_block2.m(div0, null);
     				}
     			}
     		},
@@ -6330,7 +6294,7 @@ var app = (function () {
     			current = false;
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div4);
+    			if (detaching) detach_dev(div3);
     			if (if_block0) if_block0.d();
     			if (if_block1) if_block1.d();
     			if_block2.d();
