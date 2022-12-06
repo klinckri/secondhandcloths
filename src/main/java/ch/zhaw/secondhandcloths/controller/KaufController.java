@@ -7,12 +7,15 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ch.zhaw.secondhandcloths.model.Inserat;
+import ch.zhaw.secondhandcloths.model.InseratStateEnum;
 import ch.zhaw.secondhandcloths.model.Kauf;
 import ch.zhaw.secondhandcloths.model.KaufDTO;
 import ch.zhaw.secondhandcloths.model.Person;
@@ -38,21 +41,35 @@ public class KaufController {
         List<String> errors = new ArrayList<>();
         for (String inserat : kaufDTO.getInserate()) {
             Optional<Inserat> foundInserat = inseratRepository.findById(inserat);
-            if(foundInserat.isPresent()) {
+            if (foundInserat.isPresent()) {
                 inserate.add(foundInserat.get());
             } else {
                 errors.add("Artikel: " + inserat + " konnte nicht gefunden werden oder ist bereits verkauft.");
             }
         }
         Optional<Person> person = personRepository.findById(kaufDTO.getPersonId());
-            if(person.isPresent()) {
-                Kauf kauf = new Kauf(person.get(), inserate);
-                kaufRepository.save(kauf);
-                return new ResponseEntity<>(kauf, HttpStatus.OK);
-            } else {
-                errors.add("Sie sind nicht eingeloggt.");
-            }
-        
+        if (person.isPresent()) {
+            Kauf kauf = new Kauf(person.get(), inserate);
+            kaufRepository.save(kauf);
+            return new ResponseEntity<>(kauf, HttpStatus.OK);
+        } else {
+            errors.add("Sie sind nicht eingeloggt.");
+        }
+
         return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @GetMapping("/warenkorb")
+    public ResponseEntity<List<Inserat>> warenkorb() {
+        List<Inserat> inserate = inseratRepository.findByInseratState(InseratStateEnum.WARENKORB);
+        return new ResponseEntity<>(inserate, HttpStatus.OK);
+    }
+
+    @PostMapping("/removeFromBasket/{id}")
+    public ResponseEntity<Void> removeFromBasket(@PathVariable String id) {
+        Optional<Inserat> inserat = inseratRepository.findById(id);
+        inserat.get().setInseratState(InseratStateEnum.INSERIERT);
+        inseratRepository.save(inserat.get());
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

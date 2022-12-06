@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ch.zhaw.secondhandcloths.model.Inserat;
 import ch.zhaw.secondhandcloths.model.InseratDTO;
+import ch.zhaw.secondhandcloths.model.InseratStateEnum;
 import ch.zhaw.secondhandcloths.model.KategorieEnum;
 import ch.zhaw.secondhandcloths.model.Person;
 import ch.zhaw.secondhandcloths.repository.InseratRepository;
@@ -63,4 +64,16 @@ public class InseratController {
         }
         return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
+    @PostMapping("/addToWarenkorb/{id}")
+    public ResponseEntity<Void> addToWarenkorb(@PathVariable String id) {
+        Optional<Inserat> inserat = inseratRepository.findById(id);
+        if (inserat.isPresent()) {
+            inserat.get().setInseratState(InseratStateEnum.WARENKORB);
+            inseratRepository.save(inserat.get());
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+    
 }
