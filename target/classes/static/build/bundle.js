@@ -914,7 +914,7 @@ var app = (function () {
     }
 
     // (260:0) {#if componentParams}
-    function create_if_block$2(ctx) {
+    function create_if_block$3(ctx) {
     	let switch_instance;
     	let switch_instance_anchor;
     	let current;
@@ -999,7 +999,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$2.name,
+    		id: create_if_block$3.name,
     		type: "if",
     		source: "(260:0) {#if componentParams}",
     		ctx
@@ -1013,7 +1013,7 @@ var app = (function () {
     	let if_block;
     	let if_block_anchor;
     	let current;
-    	const if_block_creators = [create_if_block$2, create_else_block$2];
+    	const if_block_creators = [create_if_block$3, create_else_block$2];
     	const if_blocks = [];
 
     	function select_block_type(ctx, dirty) {
@@ -4695,8 +4695,8 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (37:8) {#each inserate as inserat}
-    function create_each_block(ctx) {
+    // (37:8) {#if inserat.inseratState == "INSERIERT"}
+    function create_if_block$2(ctx) {
     	let div2;
     	let div1;
     	let img;
@@ -4744,24 +4744,24 @@ var app = (function () {
     			if (!src_url_equal(img.src, img_src_value = "")) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "class", "card-img-top");
     			attr_dev(img, "alt", "");
-    			add_location(img, file$3, 39, 16, 916);
+    			add_location(img, file$3, 39, 20, 969);
     			attr_dev(h5, "class", "card-title");
-    			add_location(h5, file$3, 41, 20, 1019);
+    			add_location(h5, file$3, 41, 24, 1080);
     			attr_dev(p, "class", "card-text");
-    			add_location(p, file$3, 42, 20, 1083);
+    			add_location(p, file$3, 42, 24, 1148);
     			attr_dev(div0, "class", "card-body");
-    			add_location(div0, file$3, 40, 16, 975);
+    			add_location(div0, file$3, 40, 20, 1032);
     			attr_dev(li0, "class", "list-group-item");
-    			add_location(li0, file$3, 45, 20, 1231);
+    			add_location(li0, file$3, 45, 24, 1308);
     			attr_dev(li1, "class", "list-group-item");
-    			add_location(li1, file$3, 46, 20, 1300);
+    			add_location(li1, file$3, 46, 24, 1381);
     			attr_dev(ul, "class", "list-group list-group-flush");
-    			add_location(ul, file$3, 44, 16, 1170);
+    			add_location(ul, file$3, 44, 20, 1243);
     			attr_dev(div1, "class", "card");
     			set_style(div1, "width", "27rem");
-    			add_location(div1, file$3, 38, 12, 859);
+    			add_location(div1, file$3, 38, 16, 908);
     			attr_dev(div2, "class", "col");
-    			add_location(div2, file$3, 37, 8, 829);
+    			add_location(div2, file$3, 37, 12, 874);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -4796,9 +4796,54 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
+    		id: create_if_block$2.name,
+    		type: "if",
+    		source: "(37:8) {#if inserat.inseratState == \\\"INSERIERT\\\"}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (36:4) {#each inserate as inserat}
+    function create_each_block(ctx) {
+    	let if_block_anchor;
+    	let if_block = /*inserat*/ ctx[2].inseratState == "INSERIERT" && create_if_block$2(ctx);
+
+    	const block = {
+    		c: function create() {
+    			if (if_block) if_block.c();
+    			if_block_anchor = empty();
+    		},
+    		m: function mount(target, anchor) {
+    			if (if_block) if_block.m(target, anchor);
+    			insert_dev(target, if_block_anchor, anchor);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (/*inserat*/ ctx[2].inseratState == "INSERIERT") {
+    				if (if_block) {
+    					if_block.p(ctx, dirty);
+    				} else {
+    					if_block = create_if_block$2(ctx);
+    					if_block.c();
+    					if_block.m(if_block_anchor.parentNode, if_block_anchor);
+    				}
+    			} else if (if_block) {
+    				if_block.d(1);
+    				if_block = null;
+    			}
+    		},
+    		d: function destroy(detaching) {
+    			if (if_block) if_block.d(detaching);
+    			if (detaching) detach_dev(if_block_anchor);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(37:8) {#each inserate as inserat}",
+    		source: "(36:4) {#each inserate as inserat}",
     		ctx
     	});
 

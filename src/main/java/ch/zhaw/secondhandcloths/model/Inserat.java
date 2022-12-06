@@ -29,10 +29,5 @@ public class Inserat {
     private KategorieEnum kategorie;
     @NonNull
     private Person personId;
-    @NonNull
-    private String filename;
-    @NonNull
-    private String fileType;
-    @NonNull
-    private byte[] data;
+    private InseratStateEnum inseratState = InseratStateEnum.INSERIERT;
 }
