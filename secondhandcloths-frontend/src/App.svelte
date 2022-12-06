@@ -8,7 +8,7 @@
 <div id="app">
 	<nav class="navbar navbar-expand-lg bg-light">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="#/">Second Hand Cloths</a>
+			<a class="navbar-brand" href="#/">Home</a>
 			<button
 				class="navbar-toggler"
 				type="button"
@@ -20,15 +20,6 @@
 			>
 				<span class="navbar-toggler-icon" />
 			</button>
-			<div class="collapse navbar-collapse" id="navbarNav">
-				<ul class="navbar-nav">
-					<li class="nav-item">
-						<a class="nav-link" aria-current="page" href="#/home"
-							>Second Hand Cloths</a
-						>
-					</li>
-				</ul>
-			</div>
 			{#if $isAuthenticated}
 				<div class="collapse navbar-collapse" id="navbarNav">
 					<a

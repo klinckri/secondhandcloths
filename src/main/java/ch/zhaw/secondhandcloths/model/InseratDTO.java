@@ -1,15 +1,18 @@
 package ch.zhaw.secondhandcloths.model;
 
+
+import java.io.Serializable;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
 @AllArgsConstructor
 @Getter
-public class InseratDTO {
+@Builder
+public class InseratDTO implements Serializable{
     private String titel;
     private String beschreibung;
     private double preis;

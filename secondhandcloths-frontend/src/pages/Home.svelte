@@ -26,7 +26,6 @@
                 console.log(error);
             });
     }
-
     function addToCart(id) {
         var config = {
             method: "post",
@@ -54,7 +53,7 @@
         {#if inserat.inseratState == "INSERIERT"}
             <div class="col">
                 <div class="card" style="width: 27rem;">
-                    <img src="" class="card-img-top" alt="" />
+                    <img src="pictures/{inserat.filename}" class="card-img-top" alt="inserat" />
                     <div class="card-body">
                         <h5 class="card-title">{inserat.titel}</h5>
                         <p class="card-text">{inserat.beschreibung}</p>
