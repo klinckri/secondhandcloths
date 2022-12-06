@@ -31,4 +31,5 @@ public class Inserat {
     private Person personId;
     @NonNull
     private String filename;
+    private InseratStateEnum inseratState = InseratStateEnum.INSERIERT;
 }
