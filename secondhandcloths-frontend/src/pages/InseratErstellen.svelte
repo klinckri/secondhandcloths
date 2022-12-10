@@ -53,8 +53,9 @@
     }
 </script>
 
+<div class="shadow-sm p-3 mb-5 bg-body rounded">
 <h1 class="mt-3">Inserat erstellen</h1>
-<form class="mb-5">
+<form class="mb-5 form-group">
     <div class="row mb-3">
         <div class="col">
             <label class="form-label" for="titel">Titel</label>
@@ -87,19 +88,6 @@
                 type="number"
             />
         </div>
-    </div>
-    <div class="row mb-3">
-        <div class="col">
-            <label class="form-label" for="iban">IBAN</label>
-            <input
-                bind:value={inserat.iban}
-                class="form-control"
-                id="iban"
-                type="text"
-            />
-        </div>
-    </div>
-    <div class="row mb-3">
         <div class="col">
             <label class="form-label" for="type">Kategorie</label>
             <select
@@ -120,19 +108,14 @@
                 <option value="ANDERE">ANDERE</option>
             </select>
         </div>
-        <div class="col">
-            <label class="form-label" for="person">Person</label>
-            <input
-                bind:value={inserat.personId}
-                class="form-control"
-                id="person"
-                type="text"
-            />
-        </div>
     </div>
-    <div class="row mb-3">
+    <div class="row mb-3 ">
         <label class="form-label" for="bild">Bild hochladen</label>
         <input bind:this={input} type="file" id="file" accept=".jpg, .jpeg, .png" on:change={(e)=>uploadImage(e)}/>
     </div>
-    <button type="button" class="btn btn-primary" on:click={inserieren}>Erstellen</button>
+    <div class="d-grid gap-2">
+        <button type="button" class="btn btn-outline-secondary" on:click={inserieren}>Erstellen</button>
+      </div>
+    
 </form>
+</div>
