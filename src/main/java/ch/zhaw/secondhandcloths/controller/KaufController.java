@@ -1,8 +1,6 @@
 package ch.zhaw.secondhandcloths.controller;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,91 +15,41 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ch.zhaw.secondhandcloths.model.Inserat;
-import ch.zhaw.secondhandcloths.model.InseratStateEnum;
-import ch.zhaw.secondhandcloths.model.Kauf;
 import ch.zhaw.secondhandcloths.model.KaufDTO;
-import ch.zhaw.secondhandcloths.model.Person;
-import ch.zhaw.secondhandcloths.repository.InseratRepository;
-import ch.zhaw.secondhandcloths.repository.KaufRepository;
-import ch.zhaw.secondhandcloths.repository.PersonRepository;
+import ch.zhaw.secondhandcloths.service.KaufService;
 
 @RestController
 @RequestMapping("/api/kauf")
 public class KaufController {
 
-    @Autowired
-    private KaufRepository kaufRepository;
-    @Autowired
-    private InseratRepository inseratRepository;
-    @Autowired
-    private PersonRepository personRepository;
+    @Autowired 
+    private KaufService kaufService;
 
     @PostMapping("")
-    public ResponseEntity<Kauf> artikelKaufen(
+    public ResponseEntity<Void> artikelKaufen(
             @RequestBody KaufDTO kaufDTO) {
-        List<Inserat> inserate = new ArrayList<>();
-        List<String> errors = new ArrayList<>();
-        for (String inserat : kaufDTO.getInserate()) {
-            Optional<Inserat> foundInserat = inseratRepository.findById(inserat);
-            if (foundInserat.isPresent()) {
-                inserate.add(foundInserat.get());
-            } else {
-                errors.add("Artikel: " + inserat + " konnte nicht gefunden werden oder ist bereits verkauft.");
-            }
-        }
-        Optional<Person> person = personRepository.findById(kaufDTO.getPersonId());
-        if (person.isPresent()) {
-            Kauf kauf = new Kauf(person.get(), inserate);
-            kaufRepository.save(kauf);
-            return new ResponseEntity<>(kauf, HttpStatus.OK);
-        } else {
-            errors.add("Sie sind nicht eingeloggt.");
-        }
-
-        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        kaufService.artikelKaufen(kaufDTO);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/warenkorb")
     public ResponseEntity<List<Inserat>> warenkorb(@AuthenticationPrincipal Jwt jwt) {
         String userEmail = jwt.getClaimAsString("email");
-        Optional<Person> person = personRepository.findByEmail(userEmail);
-        List<Inserat> inserate = person.get().getWarenkorb();
+        List<Inserat> inserate = kaufService.basketOfUser(userEmail);
         return new ResponseEntity<>(inserate, HttpStatus.OK);
     }
 
     @PostMapping("/removeFromBasket/{id}")
     public ResponseEntity<Void> removeFromBasket(@PathVariable String id, @AuthenticationPrincipal Jwt jwt) {
-        Optional<Inserat> inserat = inseratRepository.findById(id);
         String userEmail = jwt.getClaimAsString("email");
-        Optional<Person> person = personRepository.findByEmail(userEmail);
-        if (person.isPresent()) {
-            List<Inserat> warenkorb = person.get().getWarenkorb();
-            person.get().getWarenkorb().clear();
-            personRepository.save(person.get());
-            warenkorb.remove(inserat.get());
-            person.get().setWarenkorb(warenkorb);
-            inserat.get().setInseratState(InseratStateEnum.INSERIERT);
-            personRepository.save(person.get());
-            inseratRepository.save(inserat.get());
-        }
+        kaufService.removeItemFromBasket(id, userEmail);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping("/addToWarenkorb/{id}")
     public ResponseEntity<Void> addToWarenkorb(@PathVariable String id, @AuthenticationPrincipal Jwt jwt) {
-        Optional<Inserat> inserat = inseratRepository.findById(id);
-        if (inserat.isPresent()) {
-            String userEmail = jwt.getClaimAsString("email");
-            Optional<Person> person = personRepository.findByEmail(userEmail);
-            if (person.isPresent()) {
-                inserat.get().setInseratState(InseratStateEnum.WARENKORB);
-                person.get().getWarenkorb().add(inserat.get());
-                inseratRepository.save(inserat.get());
-                personRepository.save(person.get());
-            }
-
-            return new ResponseEntity<>(HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        String userEmail = jwt.getClaimAsString("email");
+        kaufService.addToWarenkorb(id, userEmail);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
