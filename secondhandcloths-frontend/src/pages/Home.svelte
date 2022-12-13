@@ -1,6 +1,6 @@
 <script>
     import axios from "axios";
-    import { isAuthenticated, user, jwt_token} from "../store";
+    import { isAuthenticated, user, jwt_token, anzahlInserate} from "../store";
 
     const api_root = "http://localhost:8080";
 
@@ -37,11 +37,28 @@
         axios(config)
             .then(function () {
                 getInserate();
+                getWarenkorb();
             })
             .catch(function (error) {
                 alert(
                     "Der Artikel konnte nicht in den Warenkorb gelegt werden."
                 );
+                console.log(error);
+            });
+    }
+
+    function getWarenkorb() {
+        var config = {
+            method: "get",
+            url: api_root + "/api/kauf/warenkorbSize",
+            headers: { Authorization: "Bearer " + $jwt_token },
+        };
+
+        axios(config)
+            .then(function (response) {
+                anzahlInserate.set(response.data);
+            })
+            .catch(function (error) {
                 console.log(error);
             });
     }

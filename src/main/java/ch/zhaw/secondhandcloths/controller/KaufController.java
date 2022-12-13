@@ -39,6 +39,13 @@ public class KaufController {
         return new ResponseEntity<>(inserate, HttpStatus.OK);
     }
 
+    @GetMapping("/warenkorbSize")
+    public ResponseEntity<Integer> warenkorbSize(@AuthenticationPrincipal Jwt jwt) {
+        String userEmail = jwt.getClaimAsString("email");
+        List<Inserat> inserate = kaufService.basketOfUser(userEmail);
+        return new ResponseEntity<>(inserate.size(), HttpStatus.OK);
+    }
+
     @PostMapping("/removeFromBasket/{id}")
     public ResponseEntity<Void> removeFromBasket(@PathVariable String id, @AuthenticationPrincipal Jwt jwt) {
         String userEmail = jwt.getClaimAsString("email");
