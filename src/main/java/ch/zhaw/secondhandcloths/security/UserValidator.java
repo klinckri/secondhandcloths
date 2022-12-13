@@ -24,7 +24,7 @@ public class UserValidator implements OAuth2TokenValidator<Jwt> {
         String userEmail = jwt.getClaimAsString("email");
         if (userEmail != null && !userEmail.equals("")) {
             if (!personRepository.findByEmail(userEmail).isPresent()) {
-                personRepository.save(new Person("", "", userEmail, "", 0, "", ""));
+                personRepository.save(new Person(userEmail));
             }
             return OAuth2TokenValidatorResult.success();
         }

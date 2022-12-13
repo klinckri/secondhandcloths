@@ -1,6 +1,6 @@
 <script>
     import axios from "axios";
-    import { isAuthenticated, user, jwt_token } from "../store";
+    import { isAuthenticated, jwt_token } from "../store";
 
     const api_root = "http://localhost:8080";
     let inserat = {

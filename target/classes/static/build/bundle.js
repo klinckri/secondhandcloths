@@ -4698,11 +4698,11 @@ var app = (function () {
 
     function get_each_context$2(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[6] = list[i];
+    	child_ctx[7] = list[i];
     	return child_ctx;
     }
 
-    // (55:8) {#if inserat.inseratState == "INSERIERT"}
+    // (70:8) {#if inserat.inseratState == "INSERIERT"}
     function create_if_block$4(ctx) {
     	let div2;
     	let div1;
@@ -4711,26 +4711,29 @@ var app = (function () {
     	let t0;
     	let div0;
     	let h5;
-    	let t1_value = /*inserat*/ ctx[6].titel + "";
+    	let t1_value = /*inserat*/ ctx[7].titel + "";
     	let t1;
     	let t2;
     	let p;
-    	let t3_value = /*inserat*/ ctx[6].beschreibung + "";
+    	let t3_value = /*inserat*/ ctx[7].beschreibung + "";
     	let t3;
     	let t4;
     	let ul;
     	let li0;
     	let t5;
-    	let t6_value = /*inserat*/ ctx[6].preis + "";
+    	let t6_value = /*inserat*/ ctx[7].preis + "";
     	let t6;
     	let t7;
     	let li1;
     	let t8;
-    	let t9_value = /*inserat*/ ctx[6].kategorie + "";
+    	let t9_value = /*inserat*/ ctx[7].kategorie + "";
     	let t9;
     	let t10;
     	let t11;
-    	let if_block = /*$isAuthenticated*/ ctx[1] && create_if_block_1$1(ctx);
+    	let show_if = /*$isAuthenticated*/ ctx[1] && /*$user*/ ctx[2].user_roles && /*$user*/ ctx[2].user_roles.includes("admin");
+    	let t12;
+    	let if_block0 = /*$isAuthenticated*/ ctx[1] && create_if_block_2$1(ctx);
+    	let if_block1 = show_if && create_if_block_1$1(ctx);
 
     	const block = {
     		c: function create() {
@@ -4754,29 +4757,31 @@ var app = (function () {
     			t8 = text("Kategorie: ");
     			t9 = text(t9_value);
     			t10 = space();
-    			if (if_block) if_block.c();
+    			if (if_block0) if_block0.c();
     			t11 = space();
-    			if (!src_url_equal(img.src, img_src_value = "pictures/" + /*inserat*/ ctx[6].filename)) attr_dev(img, "src", img_src_value);
+    			if (if_block1) if_block1.c();
+    			t12 = space();
+    			if (!src_url_equal(img.src, img_src_value = "pictures/" + /*inserat*/ ctx[7].filename)) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "class", "card-img-top");
     			attr_dev(img, "alt", "inserat");
-    			add_location(img, file$4, 60, 20, 1620);
+    			add_location(img, file$4, 75, 20, 2036);
     			attr_dev(h5, "class", "card-title");
-    			add_location(h5, file$4, 66, 24, 1857);
+    			add_location(h5, file$4, 81, 24, 2273);
     			attr_dev(p, "class", "card-text");
-    			add_location(p, file$4, 67, 24, 1925);
+    			add_location(p, file$4, 82, 24, 2341);
     			attr_dev(div0, "class", "card-body");
-    			add_location(div0, file$4, 65, 20, 1809);
+    			add_location(div0, file$4, 80, 20, 2225);
     			attr_dev(li0, "class", "list-group-item");
-    			add_location(li0, file$4, 70, 24, 2085);
+    			add_location(li0, file$4, 85, 24, 2501);
     			attr_dev(li1, "class", "list-group-item");
-    			add_location(li1, file$4, 73, 24, 2226);
+    			add_location(li1, file$4, 88, 24, 2642);
     			attr_dev(ul, "class", "list-group list-group-flush");
-    			add_location(ul, file$4, 69, 20, 2020);
+    			add_location(ul, file$4, 84, 20, 2436);
     			attr_dev(div1, "class", "card bg-light shadow-sm p-3 mb-5 bg-body rounded");
     			set_style(div1, "width", "27rem");
-    			add_location(div1, file$4, 56, 16, 1458);
+    			add_location(div1, file$4, 71, 16, 1874);
     			attr_dev(div2, "class", "col");
-    			add_location(div2, file$4, 55, 12, 1424);
+    			add_location(div2, file$4, 70, 12, 1840);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -4799,35 +4804,53 @@ var app = (function () {
     			append_dev(li1, t8);
     			append_dev(li1, t9);
     			append_dev(ul, t10);
-    			if (if_block) if_block.m(ul, null);
-    			append_dev(div2, t11);
+    			if (if_block0) if_block0.m(ul, null);
+    			append_dev(ul, t11);
+    			if (if_block1) if_block1.m(ul, null);
+    			append_dev(div2, t12);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*inserate*/ 1 && !src_url_equal(img.src, img_src_value = "pictures/" + /*inserat*/ ctx[6].filename)) {
+    			if (dirty & /*inserate*/ 1 && !src_url_equal(img.src, img_src_value = "pictures/" + /*inserat*/ ctx[7].filename)) {
     				attr_dev(img, "src", img_src_value);
     			}
 
-    			if (dirty & /*inserate*/ 1 && t1_value !== (t1_value = /*inserat*/ ctx[6].titel + "")) set_data_dev(t1, t1_value);
-    			if (dirty & /*inserate*/ 1 && t3_value !== (t3_value = /*inserat*/ ctx[6].beschreibung + "")) set_data_dev(t3, t3_value);
-    			if (dirty & /*inserate*/ 1 && t6_value !== (t6_value = /*inserat*/ ctx[6].preis + "")) set_data_dev(t6, t6_value);
-    			if (dirty & /*inserate*/ 1 && t9_value !== (t9_value = /*inserat*/ ctx[6].kategorie + "")) set_data_dev(t9, t9_value);
+    			if (dirty & /*inserate*/ 1 && t1_value !== (t1_value = /*inserat*/ ctx[7].titel + "")) set_data_dev(t1, t1_value);
+    			if (dirty & /*inserate*/ 1 && t3_value !== (t3_value = /*inserat*/ ctx[7].beschreibung + "")) set_data_dev(t3, t3_value);
+    			if (dirty & /*inserate*/ 1 && t6_value !== (t6_value = /*inserat*/ ctx[7].preis + "")) set_data_dev(t6, t6_value);
+    			if (dirty & /*inserate*/ 1 && t9_value !== (t9_value = /*inserat*/ ctx[7].kategorie + "")) set_data_dev(t9, t9_value);
 
     			if (/*$isAuthenticated*/ ctx[1]) {
-    				if (if_block) {
-    					if_block.p(ctx, dirty);
+    				if (if_block0) {
+    					if_block0.p(ctx, dirty);
     				} else {
-    					if_block = create_if_block_1$1(ctx);
-    					if_block.c();
-    					if_block.m(ul, null);
+    					if_block0 = create_if_block_2$1(ctx);
+    					if_block0.c();
+    					if_block0.m(ul, t11);
     				}
-    			} else if (if_block) {
-    				if_block.d(1);
-    				if_block = null;
+    			} else if (if_block0) {
+    				if_block0.d(1);
+    				if_block0 = null;
+    			}
+
+    			if (dirty & /*$isAuthenticated, $user*/ 6) show_if = /*$isAuthenticated*/ ctx[1] && /*$user*/ ctx[2].user_roles && /*$user*/ ctx[2].user_roles.includes("admin");
+
+    			if (show_if) {
+    				if (if_block1) {
+    					if_block1.p(ctx, dirty);
+    				} else {
+    					if_block1 = create_if_block_1$1(ctx);
+    					if_block1.c();
+    					if_block1.m(ul, null);
+    				}
+    			} else if (if_block1) {
+    				if_block1.d(1);
+    				if_block1 = null;
     			}
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div2);
-    			if (if_block) if_block.d();
+    			if (if_block0) if_block0.d();
+    			if (if_block1) if_block1.d();
     		}
     	};
 
@@ -4835,15 +4858,15 @@ var app = (function () {
     		block,
     		id: create_if_block$4.name,
     		type: "if",
-    		source: "(55:8) {#if inserat.inseratState == \\\"INSERIERT\\\"}",
+    		source: "(70:8) {#if inserat.inseratState == \\\"INSERIERT\\\"}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (77:24) {#if $isAuthenticated}
-    function create_if_block_1$1(ctx) {
+    // (92:24) {#if $isAuthenticated}
+    function create_if_block_2$1(ctx) {
     	let li;
     	let button;
     	let svg;
@@ -4862,20 +4885,20 @@ var app = (function () {
     			path1 = svg_element("path");
     			t = text(" In den Warenkorb legen");
     			attr_dev(path0, "d", "M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z");
-    			add_location(path0, file$4, 89, 40, 3109);
+    			add_location(path0, file$4, 104, 40, 3525);
     			attr_dev(path1, "d", "M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z");
-    			add_location(path1, file$4, 92, 40, 3338);
+    			add_location(path1, file$4, 107, 40, 3754);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "width", "16");
     			attr_dev(svg, "height", "16");
     			attr_dev(svg, "fill", "currentColor");
     			attr_dev(svg, "class", "bi bi-cart-plus");
     			attr_dev(svg, "viewBox", "0 0 16 16");
-    			add_location(svg, file$4, 81, 37, 2664);
+    			add_location(svg, file$4, 96, 37, 3080);
     			attr_dev(button, "class", "btn btn-outline-secondary");
-    			add_location(button, file$4, 78, 32, 2480);
+    			add_location(button, file$4, 93, 32, 2896);
     			attr_dev(li, "class", "list-group-item");
-    			add_location(li, file$4, 77, 28, 2419);
+    			add_location(li, file$4, 92, 28, 2835);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, li, anchor);
@@ -4890,7 +4913,87 @@ var app = (function () {
     					button,
     					"click",
     					function () {
-    						if (is_function(/*addToCart*/ ctx[2](/*inserat*/ ctx[6].id))) /*addToCart*/ ctx[2](/*inserat*/ ctx[6].id).apply(this, arguments);
+    						if (is_function(/*addToCart*/ ctx[3](/*inserat*/ ctx[7].id))) /*addToCart*/ ctx[3](/*inserat*/ ctx[7].id).apply(this, arguments);
+    					},
+    					false,
+    					false,
+    					false
+    				);
+
+    				mounted = true;
+    			}
+    		},
+    		p: function update(new_ctx, dirty) {
+    			ctx = new_ctx;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(li);
+    			mounted = false;
+    			dispose();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_2$1.name,
+    		type: "if",
+    		source: "(92:24) {#if $isAuthenticated}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (115:24) {#if $isAuthenticated && $user.user_roles && $user.user_roles.includes("admin")}
+    function create_if_block_1$1(ctx) {
+    	let li;
+    	let button;
+    	let svg;
+    	let path0;
+    	let path1;
+    	let t;
+    	let mounted;
+    	let dispose;
+
+    	const block = {
+    		c: function create() {
+    			li = element("li");
+    			button = element("button");
+    			svg = svg_element("svg");
+    			path0 = svg_element("path");
+    			path1 = svg_element("path");
+    			t = text(" Inserat löschen");
+    			attr_dev(path0, "d", "M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z");
+    			add_location(path0, file$4, 118, 40, 4810);
+    			attr_dev(path1, "fill-rule", "evenodd");
+    			attr_dev(path1, "d", "M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z");
+    			add_location(path1, file$4, 119, 40, 5023);
+    			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
+    			attr_dev(svg, "width", "16");
+    			attr_dev(svg, "height", "16");
+    			attr_dev(svg, "fill", "currentColor");
+    			attr_dev(svg, "class", "bi bi-trash");
+    			attr_dev(svg, "viewBox", "0 0 16 16");
+    			add_location(svg, file$4, 117, 36, 4645);
+    			attr_dev(button, "class", "btn btn-outline-secondary");
+    			add_location(button, file$4, 116, 32, 4532);
+    			attr_dev(li, "class", "list-group-item");
+    			add_location(li, file$4, 115, 28, 4471);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, li, anchor);
+    			append_dev(li, button);
+    			append_dev(button, svg);
+    			append_dev(svg, path0);
+    			append_dev(svg, path1);
+    			append_dev(button, t);
+
+    			if (!mounted) {
+    				dispose = listen_dev(
+    					button,
+    					"click",
+    					function () {
+    						if (is_function(/*deleteItem*/ ctx[4](/*inserat*/ ctx[7].id))) /*deleteItem*/ ctx[4](/*inserat*/ ctx[7].id).apply(this, arguments);
     					},
     					false,
     					false,
@@ -4914,17 +5017,17 @@ var app = (function () {
     		block,
     		id: create_if_block_1$1.name,
     		type: "if",
-    		source: "(77:24) {#if $isAuthenticated}",
+    		source: "(115:24) {#if $isAuthenticated && $user.user_roles && $user.user_roles.includes(\\\"admin\\\")}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (54:4) {#each inserate as inserat}
+    // (69:4) {#each inserate as inserat}
     function create_each_block$2(ctx) {
     	let if_block_anchor;
-    	let if_block = /*inserat*/ ctx[6].inseratState == "INSERIERT" && create_if_block$4(ctx);
+    	let if_block = /*inserat*/ ctx[7].inseratState == "INSERIERT" && create_if_block$4(ctx);
 
     	const block = {
     		c: function create() {
@@ -4936,7 +5039,7 @@ var app = (function () {
     			insert_dev(target, if_block_anchor, anchor);
     		},
     		p: function update(ctx, dirty) {
-    			if (/*inserat*/ ctx[6].inseratState == "INSERIERT") {
+    			if (/*inserat*/ ctx[7].inseratState == "INSERIERT") {
     				if (if_block) {
     					if_block.p(ctx, dirty);
     				} else {
@@ -4959,7 +5062,7 @@ var app = (function () {
     		block,
     		id: create_each_block$2.name,
     		type: "each",
-    		source: "(54:4) {#each inserate as inserat}",
+    		source: "(69:4) {#each inserate as inserat}",
     		ctx
     	});
 
@@ -4989,9 +5092,9 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			add_location(h1, file$4, 50, 0, 1242);
+    			add_location(h1, file$4, 65, 0, 1658);
     			attr_dev(div, "class", "row row-cols-1 row-cols-md-3 g-4");
-    			add_location(div, file$4, 52, 0, 1283);
+    			add_location(div, file$4, 67, 0, 1699);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -5006,7 +5109,7 @@ var app = (function () {
     			}
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*addToCart, inserate, $isAuthenticated*/ 7) {
+    			if (dirty & /*deleteItem, inserate, $isAuthenticated, $user, addToCart*/ 31) {
     				each_value = /*inserate*/ ctx[0];
     				validate_each_argument(each_value);
     				let i;
@@ -5056,14 +5159,16 @@ var app = (function () {
     function instance$4($$self, $$props, $$invalidate) {
     	let $jwt_token;
     	let $isAuthenticated;
+    	let $user;
     	validate_store(jwt_token, 'jwt_token');
-    	component_subscribe($$self, jwt_token, $$value => $$invalidate(3, $jwt_token = $$value));
+    	component_subscribe($$self, jwt_token, $$value => $$invalidate(5, $jwt_token = $$value));
     	validate_store(isAuthenticated, 'isAuthenticated');
     	component_subscribe($$self, isAuthenticated, $$value => $$invalidate(1, $isAuthenticated = $$value));
+    	validate_store(user, 'user');
+    	component_subscribe($$self, user, $$value => $$invalidate(2, $user = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('Home', slots, []);
     	let inserate = [];
-    	let personId = "637d281cdb985f2b502d952e";
 
     	function getInserate() {
     		var config = {
@@ -5095,6 +5200,21 @@ var app = (function () {
     		});
     	}
 
+    	function deleteItem(id) {
+    		var config = {
+    			method: "delete",
+    			url: api_root$3 + "/api/inserat/delete/" + id,
+    			headers: { Authorization: "Bearer " + $jwt_token }
+    		};
+
+    		axios(config).then(function () {
+    			getInserate();
+    		}).catch(function (error) {
+    			alert("Could not delete Inserat");
+    			console.log(error);
+    		});
+    	}
+
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
@@ -5108,16 +5228,16 @@ var app = (function () {
     		jwt_token,
     		api_root: api_root$3,
     		inserate,
-    		personId,
     		getInserate,
     		addToCart,
+    		deleteItem,
     		$jwt_token,
-    		$isAuthenticated
+    		$isAuthenticated,
+    		$user
     	});
 
     	$$self.$inject_state = $$props => {
     		if ('inserate' in $$props) $$invalidate(0, inserate = $$props.inserate);
-    		if ('personId' in $$props) personId = $$props.personId;
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -5128,7 +5248,7 @@ var app = (function () {
     		getInserate();
     	}
 
-    	return [inserate, $isAuthenticated, addToCart];
+    	return [inserate, $isAuthenticated, $user, addToCart, deleteItem];
     }
 
     class Home extends SvelteComponentDev {
@@ -5263,98 +5383,98 @@ var app = (function () {
     			button = element("button");
     			button.textContent = "Erstellen";
     			attr_dev(h1, "class", "mt-3");
-    			add_location(h1, file$3, 56, 8, 1566);
+    			add_location(h1, file$3, 56, 8, 1560);
     			attr_dev(label0, "class", "form-label");
     			attr_dev(label0, "for", "titel");
-    			add_location(label0, file$3, 60, 20, 1734);
+    			add_location(label0, file$3, 60, 20, 1728);
     			attr_dev(input0, "class", "form-control");
     			attr_dev(input0, "id", "titel");
     			attr_dev(input0, "type", "text");
-    			add_location(input0, file$3, 61, 20, 1806);
+    			add_location(input0, file$3, 61, 20, 1800);
     			attr_dev(div0, "class", "col");
-    			add_location(div0, file$3, 59, 16, 1696);
+    			add_location(div0, file$3, 59, 16, 1690);
     			attr_dev(div1, "class", "row mb-3");
-    			add_location(div1, file$3, 58, 12, 1657);
+    			add_location(div1, file$3, 58, 12, 1651);
     			attr_dev(label1, "class", "form-label");
     			attr_dev(label1, "for", "beschreibung");
-    			add_location(label1, file$3, 71, 20, 2134);
+    			add_location(label1, file$3, 71, 20, 2128);
     			attr_dev(input1, "class", "form-control");
     			attr_dev(input1, "id", "beschreibung");
     			attr_dev(input1, "type", "text");
-    			add_location(input1, file$3, 74, 20, 2266);
+    			add_location(input1, file$3, 74, 20, 2260);
     			attr_dev(div2, "class", "col");
-    			add_location(div2, file$3, 70, 16, 2096);
+    			add_location(div2, file$3, 70, 16, 2090);
     			attr_dev(div3, "class", "row mb-3");
-    			add_location(div3, file$3, 69, 12, 2057);
+    			add_location(div3, file$3, 69, 12, 2051);
     			attr_dev(label2, "class", "form-label");
     			attr_dev(label2, "for", "preis");
-    			add_location(label2, file$3, 84, 20, 2608);
+    			add_location(label2, file$3, 84, 20, 2602);
     			attr_dev(input2, "class", "form-control");
     			attr_dev(input2, "id", "preis");
     			attr_dev(input2, "type", "number");
-    			add_location(input2, file$3, 85, 20, 2680);
+    			add_location(input2, file$3, 85, 20, 2674);
     			attr_dev(div4, "class", "col");
-    			add_location(div4, file$3, 83, 16, 2570);
+    			add_location(div4, file$3, 83, 16, 2564);
     			attr_dev(label3, "class", "form-label");
     			attr_dev(label3, "for", "type");
-    			add_location(label3, file$3, 93, 20, 2956);
+    			add_location(label3, file$3, 93, 20, 2950);
     			option0.__value = "KLEIDER";
     			option0.value = option0.__value;
-    			add_location(option0, file$3, 100, 24, 3254);
+    			add_location(option0, file$3, 100, 24, 3248);
     			option1.__value = "HOSEN";
     			option1.value = option1.__value;
-    			add_location(option1, file$3, 101, 24, 3319);
+    			add_location(option1, file$3, 101, 24, 3313);
     			option2.__value = "PULLOVER";
     			option2.value = option2.__value;
-    			add_location(option2, file$3, 102, 24, 3380);
+    			add_location(option2, file$3, 102, 24, 3374);
     			option3.__value = "BLAZER";
     			option3.value = option3.__value;
-    			add_location(option3, file$3, 103, 24, 3447);
+    			add_location(option3, file$3, 103, 24, 3441);
     			option4.__value = "ANZUG";
     			option4.value = option4.__value;
-    			add_location(option4, file$3, 104, 24, 3510);
+    			add_location(option4, file$3, 104, 24, 3504);
     			option5.__value = "JACKEN";
     			option5.value = option5.__value;
-    			add_location(option5, file$3, 105, 24, 3571);
+    			add_location(option5, file$3, 105, 24, 3565);
     			option6.__value = "TOPS";
     			option6.value = option6.__value;
-    			add_location(option6, file$3, 106, 24, 3634);
+    			add_location(option6, file$3, 106, 24, 3628);
     			option7.__value = "UNTERWAESCHE";
     			option7.value = option7.__value;
-    			add_location(option7, file$3, 107, 24, 3693);
+    			add_location(option7, file$3, 107, 24, 3687);
     			option8.__value = "SCHUHE";
     			option8.value = option8.__value;
-    			add_location(option8, file$3, 108, 24, 3768);
+    			add_location(option8, file$3, 108, 24, 3762);
     			option9.__value = "ANDERE";
     			option9.value = option9.__value;
-    			add_location(option9, file$3, 109, 24, 3831);
+    			add_location(option9, file$3, 109, 24, 3825);
     			attr_dev(select, "class", "form-select");
     			attr_dev(select, "id", "type");
     			attr_dev(select, "type", "text");
     			if (/*inserat*/ ctx[0].kategorie === void 0) add_render_callback(() => /*select_change_handler*/ ctx[8].call(select));
-    			add_location(select, file$3, 94, 20, 3031);
+    			add_location(select, file$3, 94, 20, 3025);
     			attr_dev(div5, "class", "col");
-    			add_location(div5, file$3, 92, 16, 2918);
+    			add_location(div5, file$3, 92, 16, 2912);
     			attr_dev(div6, "class", "row mb-3");
-    			add_location(div6, file$3, 82, 12, 2531);
+    			add_location(div6, file$3, 82, 12, 2525);
     			attr_dev(label4, "class", "form-label");
     			attr_dev(label4, "for", "bild");
-    			add_location(label4, file$3, 114, 16, 3994);
+    			add_location(label4, file$3, 114, 16, 3988);
     			attr_dev(input3, "type", "file");
     			attr_dev(input3, "id", "file");
     			attr_dev(input3, "accept", ".jpg, .jpeg, .png");
-    			add_location(input3, file$3, 115, 16, 4070);
+    			add_location(input3, file$3, 115, 16, 4064);
     			attr_dev(div7, "class", "row mb-3 ");
-    			add_location(div7, file$3, 113, 12, 3954);
+    			add_location(div7, file$3, 113, 12, 3948);
     			attr_dev(button, "type", "button");
     			attr_dev(button, "class", "btn btn-outline-secondary");
-    			add_location(button, file$3, 124, 16, 4371);
+    			add_location(button, file$3, 124, 16, 4365);
     			attr_dev(div8, "class", "d-grid gap-2");
-    			add_location(div8, file$3, 123, 12, 4328);
+    			add_location(div8, file$3, 123, 12, 4322);
     			attr_dev(form, "class", "mb-5 form-group");
-    			add_location(form, file$3, 57, 8, 1614);
+    			add_location(form, file$3, 57, 8, 1608);
     			attr_dev(div9, "class", "shadow-sm p-3 mb-5 bg-body rounded");
-    			add_location(div9, file$3, 55, 4, 1509);
+    			add_location(div9, file$3, 55, 4, 1503);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div9, anchor);
@@ -5601,7 +5721,6 @@ var app = (function () {
     	$$self.$capture_state = () => ({
     		axios,
     		isAuthenticated,
-    		user,
     		jwt_token,
     		api_root: api_root$2,
     		inserat,
@@ -6249,9 +6368,9 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			add_location(h2, file$1, 47, 0, 1200);
+    			add_location(h2, file$1, 47, 0, 1194);
     			attr_dev(div, "class", "row row-cols-1 row-cols-md-3 g-4");
-    			add_location(div, file$1, 49, 0, 1225);
+    			add_location(div, file$1, 49, 0, 1219);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h2, anchor);
@@ -6371,39 +6490,39 @@ var app = (function () {
     			if (!src_url_equal(img.src, img_src_value = "")) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "class", "card-img-top");
     			attr_dev(img, "alt", "");
-    			add_location(img, file$1, 53, 20, 1411);
+    			add_location(img, file$1, 53, 20, 1405);
     			attr_dev(h5, "class", "card-title");
-    			add_location(h5, file$1, 55, 24, 1522);
+    			add_location(h5, file$1, 55, 24, 1516);
     			attr_dev(p, "class", "card-text");
-    			add_location(p, file$1, 56, 24, 1590);
+    			add_location(p, file$1, 56, 24, 1584);
     			attr_dev(div0, "class", "card-body");
-    			add_location(div0, file$1, 54, 20, 1474);
+    			add_location(div0, file$1, 54, 20, 1468);
     			attr_dev(li0, "class", "list-group-item");
-    			add_location(li0, file$1, 59, 24, 1750);
+    			add_location(li0, file$1, 59, 24, 1744);
     			attr_dev(li1, "class", "list-group-item");
-    			add_location(li1, file$1, 60, 24, 1823);
+    			add_location(li1, file$1, 60, 24, 1817);
     			attr_dev(path0, "d", "M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z");
-    			add_location(path0, file$1, 62, 28, 2128);
+    			add_location(path0, file$1, 62, 28, 2122);
     			attr_dev(path1, "fill-rule", "evenodd");
     			attr_dev(path1, "d", "M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z");
-    			add_location(path1, file$1, 63, 28, 2328);
+    			add_location(path1, file$1, 63, 28, 2322);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "width", "16");
     			attr_dev(svg, "height", "16");
     			attr_dev(svg, "fill", "currentColor");
     			attr_dev(svg, "class", "bi bi-trash");
     			attr_dev(svg, "viewBox", "0 0 16 16");
-    			add_location(svg, file$1, 61, 100, 1976);
-    			add_location(button, file$1, 61, 52, 1928);
+    			add_location(svg, file$1, 61, 100, 1970);
+    			add_location(button, file$1, 61, 52, 1922);
     			attr_dev(li2, "class", "list-group-item");
-    			add_location(li2, file$1, 61, 24, 1900);
+    			add_location(li2, file$1, 61, 24, 1894);
     			attr_dev(ul, "class", "list-group list-group-flush");
-    			add_location(ul, file$1, 58, 20, 1685);
+    			add_location(ul, file$1, 58, 20, 1679);
     			attr_dev(div1, "class", "card");
     			set_style(div1, "width", "27rem");
-    			add_location(div1, file$1, 52, 16, 1350);
+    			add_location(div1, file$1, 52, 16, 1344);
     			attr_dev(div2, "class", "col");
-    			add_location(div2, file$1, 51, 12, 1316);
+    			add_location(div2, file$1, 51, 12, 1310);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -6573,7 +6692,6 @@ var app = (function () {
     	$$self.$capture_state = () => ({
     		axios,
     		isAuthenticated,
-    		user,
     		jwt_token,
     		api_root,
     		inserate,
