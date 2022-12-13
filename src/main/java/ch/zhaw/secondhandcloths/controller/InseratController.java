@@ -29,6 +29,7 @@ import ch.zhaw.secondhandcloths.model.KategorieEnum;
 import ch.zhaw.secondhandcloths.model.Person;
 import ch.zhaw.secondhandcloths.repository.InseratRepository;
 import ch.zhaw.secondhandcloths.repository.PersonRepository;
+import ch.zhaw.secondhandcloths.security.UserValidator;
 
 @RestController
 @RequestMapping("/api/inserat")
@@ -95,7 +96,15 @@ public class InseratController {
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteInserat(@PathVariable String id, @AuthenticationPrincipal Jwt jwt) {
-        inseratRepository.deleteById(id);
+        
+        String userEmail = jwt.getClaimAsString("email");
+        Optional<Person> person = personRepository.findByEmail(userEmail);
+        Optional<Inserat> inserat = inseratRepository.findById(id);
+
+        if(person.isPresent() && inserat.isPresent() && !person.get().getId().equals(inserat.get().getPersonId().getId()) && !UserValidator.userHasRole(jwt, "admin")) {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
+        inseratRepository.delete(inserat.get());
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
