@@ -48,14 +48,22 @@ public class PersonController {
     public ResponseEntity<Person> login(
             @RequestBody LoginDTO loginDto) {
         Optional<Person> person = personRepository.findByEmail(loginDto.getEmail());
-        if(person.isPresent()) {
-            if(person.get().getPasswort().equals(loginDto.getPasswort())) {
+        if (person.isPresent()) {
+            if (person.get().getPasswort().equals(loginDto.getPasswort())) {
                 LOGEDINPERSON = person.get();
                 return new ResponseEntity<>(person.get(), HttpStatus.OK);
-            } 
+            }
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
+    @PostMapping("/loginCheck")
+    public ResponseEntity<Void> loginCheck(
+            @RequestBody String email) {
+        if (!personRepository.findByEmail(email).isPresent()) {
+            personRepository.save(new Person("", "", email, "", 0, "", ""));
+        }
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

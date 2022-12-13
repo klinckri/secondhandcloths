@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-SecondhandclothsApplication<secondhandcloths>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "ch.zhaw.secondhandcloths.SecondhandclothsApplication",
+            "projectName": "secondhandcloths",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

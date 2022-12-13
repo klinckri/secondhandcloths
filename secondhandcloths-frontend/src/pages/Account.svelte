@@ -1,5 +1,5 @@
 <script>
-    import { user } from "../store";
+    import { isAuthenticated, user, jwt_token } from "../store";
     import axios from "axios";
 
     // TODO: Setze hier die URL zu deinem mit Postman erstellten Mock Server
@@ -10,14 +10,12 @@
     $: {
         getInserate();
     }
-
-    let file;
-    let input;
+    
     function getInserate() {
         var config = {
             method: "get",
-            url: api_root + "/api/inserat/637c6673498da731157c71c8",
-            headers: {},
+            url: api_root + "/api/inserat",
+            headers: { Authorization: "Bearer " + $jwt_token },
         };
 
         axios(config)
@@ -34,7 +32,7 @@
         var config = {
             method: "delete",
             url: api_root + "/api/inserat/delete/" + id,
-            headers: {},
+            headers: { Authorization: "Bearer " + $jwt_token },
         };
         axios(config)
             .then(function () {
@@ -46,7 +44,7 @@
             });
     }
 </script>
-
+{#if $isAuthenticated}
 <h1>Account Details</h1>
 <img src="{$user.picture}" alt="profilePicture"> 
 <p>Name: {$user.name}</p>
@@ -90,3 +88,4 @@
         </tbody>
       </table>
 </div>
+{/if}

@@ -3,6 +3,7 @@ import { user, isAuthenticated, jwt_token } from "./store";
 import config from "./auth.config";
 
 let auth0Client;
+const api_root = "http://localhost:8080";
 
 async function createClient() {
   auth0Client = await createAuth0Client({
@@ -24,6 +25,20 @@ async function loginWithPopup() {
   } catch (e) {
     console.error(e);
   } 
+}
+
+async function userCheck() {
+  var config = {
+      method: "post",
+      url: api_root + "/api/person/loginCheck",
+      headers: {},
+      data: user.email,
+  };
+
+  axios(config)
+      .catch(function (error) {
+          console.log(error);
+      });
 }
 
 function logout() {

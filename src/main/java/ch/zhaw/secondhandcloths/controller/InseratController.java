@@ -12,6 +12,8 @@ import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -39,21 +41,23 @@ public class InseratController {
 
     @PostMapping(value = "/inserieren")
     public ResponseEntity<Inserat> createInserat(
-            @ModelAttribute InseratDTO inseratDTO) throws IOException {
-        Optional<Person> person = personRepository.findById(inseratDTO.getPersonId());
+            @ModelAttribute InseratDTO inseratDTO, @AuthenticationPrincipal Jwt jwt) throws IOException {
+        String userEmail = jwt.getClaimAsString("email");
+        Optional<Person> person = personRepository.findByEmail(userEmail);
         if (person.isPresent()) {
-            //file
+            // file
             String pictureID = UUID.randomUUID().toString();
             String type = inseratDTO.getFile().getContentType().replace("image/", "");
             Path path = Paths.get("src/main/resources/static/pictures");
-            
-            //File filename = new File(path + pictureID);
-            FileUtils.writeByteArrayToFile(new File(path + "/" + pictureID + "." + type), inseratDTO.getFile().getBytes());
 
+            // File filename = new File(path + pictureID);
+            FileUtils.writeByteArrayToFile(new File(path + "/" + pictureID + "." + type),
+                    inseratDTO.getFile().getBytes());
+            String filename = pictureID + "." + type;
             // save
             Inserat inserat = new Inserat(inseratDTO.getTitel(), inseratDTO.getBeschreibung(), inseratDTO.getPreis(),
                     inseratDTO.getIban(), inseratDTO.getKategorie(), person.get(),
-                    pictureID);
+                    filename);
             Inserat savedInserat = inseratRepository.save(inserat);
             return new ResponseEntity<>(savedInserat, HttpStatus.CREATED);
         }
@@ -62,7 +66,7 @@ public class InseratController {
 
     @GetMapping("/home")
     public ResponseEntity<List<Inserat>> getAllInserate() {
-        List<Inserat> inserate = inseratRepository.findAll();
+        List<Inserat> inserate = inseratRepository.findByInseratState(InseratStateEnum.INSERIERT);
         return new ResponseEntity<>(inserate, HttpStatus.OK);
     }
 
@@ -81,29 +85,18 @@ public class InseratController {
         return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @GetMapping("/{person}")
-    public ResponseEntity<List<Inserat>> getAllByKategorie(@PathVariable String person) {
-        Optional<Person> personId = personRepository.findById(person);
-        List<Inserat> inserate = inseratRepository.findByPersonId(personId.get());
+    @GetMapping("")
+    public ResponseEntity<List<Inserat>> getAllInserateFromPerson(@AuthenticationPrincipal Jwt jwt) {
+        String userEmail = jwt.getClaimAsString("email");
+        Optional<Person> person = personRepository.findByEmail(userEmail);
+        List<Inserat> inserate = inseratRepository.findByPersonId(person.get());
         return new ResponseEntity<>(inserate, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Void> deleteInserat(@PathVariable String id) {
-        System.err.println("it's here: " + id);
+    public ResponseEntity<Void> deleteInserat(@PathVariable String id, @AuthenticationPrincipal Jwt jwt) {
         inseratRepository.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PostMapping("/addToWarenkorb/{id}")
-    public ResponseEntity<Void> addToWarenkorb(@PathVariable String id) {
-        Optional<Inserat> inserat = inseratRepository.findById(id);
-        if (inserat.isPresent()) {
-            inserat.get().setInseratState(InseratStateEnum.WARENKORB);
-            inseratRepository.save(inserat.get());
-            return new ResponseEntity<>(HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-    }
-    
 }

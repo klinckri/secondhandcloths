@@ -1,5 +1,6 @@
 <script>
     import axios from "axios";
+    import { isAuthenticated, user, jwt_token } from "../store";
 
     const api_root = "http://localhost:8080";
 
@@ -13,7 +14,7 @@
         var config = {
             method: "get",
             url: api_root + "/api/kauf/warenkorb",
-            headers: {},
+            headers: { Authorization: "Bearer " + $jwt_token },
         };
 
         axios(config)
@@ -30,11 +31,11 @@
         var config = {
             method: "post",
             url: api_root + "/api/kauf/removeFromBasket/" + id,
-            headers: {},
+            headers: { Authorization: "Bearer " + $jwt_token },
         };
 
         axios(config)
-            .then(function (response) {
+            .then(function () {
                 getWarenkorb()
             })
             .catch(function (error) {
@@ -43,7 +44,7 @@
             });
     }
 </script>
-
+{#if $isAuthenticated}
 <h2>Mein Warenkorb</h2>
 
 <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -67,3 +68,4 @@
             </div>
     {/each}
 </div>
+{/if}

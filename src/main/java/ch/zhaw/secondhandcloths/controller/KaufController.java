@@ -7,6 +7,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -60,16 +62,46 @@ public class KaufController {
     }
 
     @GetMapping("/warenkorb")
-    public ResponseEntity<List<Inserat>> warenkorb() {
-        List<Inserat> inserate = inseratRepository.findByInseratState(InseratStateEnum.WARENKORB);
+    public ResponseEntity<List<Inserat>> warenkorb(@AuthenticationPrincipal Jwt jwt) {
+        String userEmail = jwt.getClaimAsString("email");
+        Optional<Person> person = personRepository.findByEmail(userEmail);
+        List<Inserat> inserate = person.get().getWarenkorb();
         return new ResponseEntity<>(inserate, HttpStatus.OK);
     }
 
     @PostMapping("/removeFromBasket/{id}")
-    public ResponseEntity<Void> removeFromBasket(@PathVariable String id) {
+    public ResponseEntity<Void> removeFromBasket(@PathVariable String id, @AuthenticationPrincipal Jwt jwt) {
         Optional<Inserat> inserat = inseratRepository.findById(id);
-        inserat.get().setInseratState(InseratStateEnum.INSERIERT);
-        inseratRepository.save(inserat.get());
+        String userEmail = jwt.getClaimAsString("email");
+        Optional<Person> person = personRepository.findByEmail(userEmail);
+        if (person.isPresent()) {
+            List<Inserat> warenkorb = person.get().getWarenkorb();
+            person.get().getWarenkorb().clear();
+            personRepository.save(person.get());
+            warenkorb.remove(inserat.get());
+            person.get().setWarenkorb(warenkorb);
+            inserat.get().setInseratState(InseratStateEnum.INSERIERT);
+            personRepository.save(person.get());
+            inseratRepository.save(inserat.get());
+        }
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PostMapping("/addToWarenkorb/{id}")
+    public ResponseEntity<Void> addToWarenkorb(@PathVariable String id, @AuthenticationPrincipal Jwt jwt) {
+        Optional<Inserat> inserat = inseratRepository.findById(id);
+        if (inserat.isPresent()) {
+            String userEmail = jwt.getClaimAsString("email");
+            Optional<Person> person = personRepository.findByEmail(userEmail);
+            if (person.isPresent()) {
+                inserat.get().setInseratState(InseratStateEnum.WARENKORB);
+                person.get().getWarenkorb().add(inserat.get());
+                inseratRepository.save(inserat.get());
+                personRepository.save(person.get());
+            }
+
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
