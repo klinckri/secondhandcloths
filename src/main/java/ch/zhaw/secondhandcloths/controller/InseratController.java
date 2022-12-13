@@ -45,7 +45,7 @@ public class InseratController {
         return new ResponseEntity<>(inseratService.getInseratById(id), HttpStatus.OK);
     }
 
-    @GetMapping("")
+    @GetMapping("/person")
     public ResponseEntity<List<Inserat>> getAllInserateFromPerson(@AuthenticationPrincipal Jwt jwt) {
         String userEmail = jwt.getClaimAsString("email");
         List<Inserat> inserate = inseratService.getAllInserateFromPerson(userEmail);

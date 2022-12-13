@@ -14,7 +14,7 @@
     function getInserate() {
         var config = {
             method: "get",
-            url: api_root + "/api/inserat",
+            url: api_root + "/api/inserat/person",
             headers: { Authorization: "Bearer " + $jwt_token },
         };
 
