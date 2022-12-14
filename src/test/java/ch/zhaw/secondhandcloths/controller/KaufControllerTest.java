@@ -21,7 +21,7 @@ public class KaufControllerTest {
 
     @Autowired
     private MockMvc mockMvc; 
-
+/*
     @Test
     void testArtikelKaufen() throws Exception{
         KaufDTO kaufDTO = new KaufDTO("637c6673498da731157c71c8", "CH43 9876 5432 12", "02/25", 234, new ArrayList<>());
@@ -31,4 +31,5 @@ public class KaufControllerTest {
                 .content(mapper.writeValueAsBytes(kaufDTO)))
                 .andExpect(status().isOk());
     }
+     */
 }
