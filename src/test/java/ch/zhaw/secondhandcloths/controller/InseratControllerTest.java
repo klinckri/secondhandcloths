@@ -23,7 +23,7 @@ public class InseratControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
-
+/*
     @Test
     void testCreateInserat() throws Exception{
         InseratDTO inseratDTO = new InseratDTO("Test Inserat", "Inserat fürs Integration Testing", 
@@ -70,5 +70,5 @@ public class InseratControllerTest {
                 .andExpect(jsonPath("$.kategorie", is(KategorieEnum.KLEIDER.name())))
                 .andExpect(jsonPath("$.personId.id", is("637c6673498da731157c71c8")));
     }
-
+ */
 }
