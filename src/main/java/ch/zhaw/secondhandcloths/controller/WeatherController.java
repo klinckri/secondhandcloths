@@ -19,7 +19,6 @@ public class WeatherController {
 
     @GetMapping("")
     public ResponseEntity<Root> connection(@RequestParam String city) {
-        System.out.println("Stadt: " + city);
         Root connection = connectionService.getConnection(city);
         return new ResponseEntity<>(connection, HttpStatus.OK);
     }

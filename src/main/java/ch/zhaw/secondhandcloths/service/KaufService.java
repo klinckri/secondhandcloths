@@ -2,7 +2,6 @@ package ch.zhaw.secondhandcloths.service;
 
 import static java.util.Objects.nonNull;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,11 +10,8 @@ import org.springframework.stereotype.Service;
 
 import ch.zhaw.secondhandcloths.model.Inserat;
 import ch.zhaw.secondhandcloths.model.InseratStateEnum;
-import ch.zhaw.secondhandcloths.model.Kauf;
-import ch.zhaw.secondhandcloths.model.KaufDTO;
 import ch.zhaw.secondhandcloths.model.Person;
 import ch.zhaw.secondhandcloths.repository.InseratRepository;
-import ch.zhaw.secondhandcloths.repository.KaufRepository;
 import ch.zhaw.secondhandcloths.repository.PersonRepository;
 
 @Service
@@ -24,8 +20,6 @@ public class KaufService {
     private PersonRepository personRepository;
     @Autowired
     private InseratRepository inseratRepository;
-    @Autowired
-    private KaufRepository kaufRepository;
 
     public void removeItemFromBasket(String inseratId, String email) {
         if (nonNull(inseratId) || nonNull(email)) {

@@ -7,10 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 
 @Getter
-@Setter
 @NoArgsConstructor
 @RequiredArgsConstructor
 @Document("inserat")
@@ -30,4 +28,8 @@ public class Inserat {
     @NonNull
     private String filename;
     private InseratStateEnum inseratState = InseratStateEnum.INSERIERT;
+
+    public void setInseratState(InseratStateEnum inseratState) {
+        this.inseratState = inseratState;
+    }
 }
