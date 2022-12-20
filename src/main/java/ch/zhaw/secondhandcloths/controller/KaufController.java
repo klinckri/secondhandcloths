@@ -25,12 +25,12 @@ public class KaufController {
     @Autowired 
     private KaufService kaufService;
 
-    @PostMapping("")
+    /*@PostMapping("")
     public ResponseEntity<Void> artikelKaufen(
             @RequestBody KaufDTO kaufDTO) {
         kaufService.artikelKaufen(kaufDTO);
         return new ResponseEntity<>(HttpStatus.OK);
-    }
+    }*/
 
     @GetMapping("/warenkorb")
     public ResponseEntity<List<Inserat>> warenkorb(@AuthenticationPrincipal Jwt jwt) {

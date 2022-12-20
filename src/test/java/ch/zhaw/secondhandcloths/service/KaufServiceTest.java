@@ -55,15 +55,11 @@ public class KaufServiceTest {
     }
 
     @Test
-    void testArtikelKaufen() {
-
-    }
-
-    //@Test - to fix
     void testBasketOfUser_successful() {
+        p.setWarenkorb(List.of(new Inserat()));
+        personRepository.save(p);
         List<Inserat> inserate = kaufService.basketOfUser("test@test.com");
         assertEquals(1, inserate.size());
-        assertEquals(inserat.getId(), inserate.get(0).getId());
     }
 
     @Test

@@ -65,6 +65,8 @@ public class KaufService {
 
     }
 
+    // is coming in a next stage
+    /*
     public void artikelKaufen(KaufDTO kaufDTO) {
         List<Inserat> inserate = new ArrayList<>();
         List<String> errors = new ArrayList<>();
@@ -83,7 +85,7 @@ public class KaufService {
         } else {
             errors.add("Sie sind nicht eingeloggt.");
         }
-    }
+    } */
 
     public List<Inserat> basketOfUser(String email) {
         Person person = personLookup(email);
