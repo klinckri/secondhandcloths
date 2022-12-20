@@ -44,7 +44,7 @@ public class InseratService {
         FileUtils.writeByteArrayToFile(new File(path + "/" + pictureID + "." + type), file.getBytes());
         String filename = pictureID + "." + type;
         Inserat inserat = new Inserat(inseratDTO.getTitel(), inseratDTO.getBeschreibung(), inseratDTO.getPreis(),
-                inseratDTO.getIban(), inseratDTO.getKategorie(), person,filename);
+                inseratDTO.getKategorie(), person,filename);
         return inseratRepository.save(inserat);
         
     }
