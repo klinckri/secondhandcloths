@@ -15,6 +15,7 @@
         var config = {
             method: "get",
             url: api_root + "/api/weather?" + query,
+            headers: { Authorization: "Bearer " + $jwt_token },
         };
 
         axios(config)
@@ -33,6 +34,9 @@
             });
     }
 </script>
+
+{#if $isAuthenticated}
+
     <div class="shadow-sm p-3 mb-5 bg-body rounded">
         <h1 class="mt-3">Wettervorhersage</h1>
         <form class="mb-5 form-group">
@@ -75,3 +79,4 @@
             </tbody>
           </table>
     </div>
+    {/if}

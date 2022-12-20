@@ -917,7 +917,7 @@ var app = (function () {
     }
 
     // (260:0) {#if componentParams}
-    function create_if_block$5(ctx) {
+    function create_if_block$6(ctx) {
     	let switch_instance;
     	let switch_instance_anchor;
     	let current;
@@ -1002,7 +1002,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$5.name,
+    		id: create_if_block$6.name,
     		type: "if",
     		source: "(260:0) {#if componentParams}",
     		ctx
@@ -1016,7 +1016,7 @@ var app = (function () {
     	let if_block;
     	let if_block_anchor;
     	let current;
-    	const if_block_creators = [create_if_block$5, create_else_block$1];
+    	const if_block_creators = [create_if_block$6, create_else_block$1];
     	const if_blocks = [];
 
     	function select_block_type(ctx, dirty) {
@@ -4704,7 +4704,7 @@ var app = (function () {
     }
 
     // (87:8) {#if inserat.inseratState == "INSERIERT"}
-    function create_if_block$4(ctx) {
+    function create_if_block$5(ctx) {
     	let div2;
     	let div1;
     	let img;
@@ -4857,7 +4857,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$4.name,
+    		id: create_if_block$5.name,
     		type: "if",
     		source: "(87:8) {#if inserat.inseratState == \\\"INSERIERT\\\"}",
     		ctx
@@ -5028,7 +5028,7 @@ var app = (function () {
     // (86:4) {#each inserate as inserat}
     function create_each_block$2(ctx) {
     	let if_block_anchor;
-    	let if_block = /*inserat*/ ctx[8].inseratState == "INSERIERT" && create_if_block$4(ctx);
+    	let if_block = /*inserat*/ ctx[8].inseratState == "INSERIERT" && create_if_block$5(ctx);
 
     	const block = {
     		c: function create() {
@@ -5044,7 +5044,7 @@ var app = (function () {
     				if (if_block) {
     					if_block.p(ctx, dirty);
     				} else {
-    					if_block = create_if_block$4(ctx);
+    					if_block = create_if_block$5(ctx);
     					if_block.c();
     					if_block.m(if_block_anchor.parentNode, if_block_anchor);
     				}
@@ -5289,7 +5289,7 @@ var app = (function () {
     const file$4 = "src/pages/InseratErstellen.svelte";
 
     // (55:0) {#if $isAuthenticated}
-    function create_if_block$3(ctx) {
+    function create_if_block$4(ctx) {
     	let div9;
     	let h1;
     	let t1;
@@ -5585,7 +5585,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$3.name,
+    		id: create_if_block$4.name,
     		type: "if",
     		source: "(55:0) {#if $isAuthenticated}",
     		ctx
@@ -5596,7 +5596,7 @@ var app = (function () {
 
     function create_fragment$4(ctx) {
     	let if_block_anchor;
-    	let if_block = /*$isAuthenticated*/ ctx[2] && create_if_block$3(ctx);
+    	let if_block = /*$isAuthenticated*/ ctx[2] && create_if_block$4(ctx);
 
     	const block = {
     		c: function create() {
@@ -5615,7 +5615,7 @@ var app = (function () {
     				if (if_block) {
     					if_block.p(ctx, dirty);
     				} else {
-    					if_block = create_if_block$3(ctx);
+    					if_block = create_if_block$4(ctx);
     					if_block.c();
     					if_block.m(if_block_anchor.parentNode, if_block_anchor);
     				}
@@ -5801,7 +5801,7 @@ var app = (function () {
     }
 
     // (47:0) {#if $isAuthenticated}
-    function create_if_block$2(ctx) {
+    function create_if_block$3(ctx) {
     	let h1;
     	let t1;
     	let img;
@@ -6028,7 +6028,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$2.name,
+    		id: create_if_block$3.name,
     		type: "if",
     		source: "(47:0) {#if $isAuthenticated}",
     		ctx
@@ -6209,7 +6209,7 @@ var app = (function () {
 
     function create_fragment$3(ctx) {
     	let if_block_anchor;
-    	let if_block = /*$isAuthenticated*/ ctx[1] && create_if_block$2(ctx);
+    	let if_block = /*$isAuthenticated*/ ctx[1] && create_if_block$3(ctx);
 
     	const block = {
     		c: function create() {
@@ -6228,7 +6228,7 @@ var app = (function () {
     				if (if_block) {
     					if_block.p(ctx, dirty);
     				} else {
-    					if_block = create_if_block$2(ctx);
+    					if_block = create_if_block$3(ctx);
     					if_block.c();
     					if_block.m(if_block_anchor.parentNode, if_block_anchor);
     				}
@@ -6363,7 +6363,7 @@ var app = (function () {
     }
 
     // (64:0) {#if $isAuthenticated}
-    function create_if_block$1(ctx) {
+    function create_if_block$2(ctx) {
     	let h2;
     	let t1;
     	let div;
@@ -6434,7 +6434,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$1.name,
+    		id: create_if_block$2.name,
     		type: "if",
     		source: "(64:0) {#if $isAuthenticated}",
     		ctx
@@ -6617,7 +6617,7 @@ var app = (function () {
 
     function create_fragment$2(ctx) {
     	let if_block_anchor;
-    	let if_block = /*$isAuthenticated*/ ctx[1] && create_if_block$1(ctx);
+    	let if_block = /*$isAuthenticated*/ ctx[1] && create_if_block$2(ctx);
 
     	const block = {
     		c: function create() {
@@ -6636,7 +6636,7 @@ var app = (function () {
     				if (if_block) {
     					if_block.p(ctx, dirty);
     				} else {
-    					if_block = create_if_block$1(ctx);
+    					if_block = create_if_block$2(ctx);
     					if_block.c();
     					if_block.m(if_block_anchor.parentNode, if_block_anchor);
     				}
@@ -6776,7 +6776,8 @@ var app = (function () {
     const { console: console_1 } = globals;
     const file$1 = "src/pages/Weather.svelte";
 
-    function create_fragment$1(ctx) {
+    // (38:0) {#if $isAuthenticated}
+    function create_if_block$1(ctx) {
     	let div3;
     	let h1;
     	let t1;
@@ -6886,68 +6887,65 @@ var app = (function () {
     			td5 = element("td");
     			div9 = element("div");
     			attr_dev(h1, "class", "mt-3");
-    			add_location(h1, file$1, 36, 8, 1289);
+    			add_location(h1, file$1, 40, 8, 1378);
     			attr_dev(label, "class", "form-label");
     			attr_dev(label, "for", "titel");
-    			add_location(label, file$1, 40, 20, 1456);
+    			add_location(label, file$1, 44, 20, 1545);
     			attr_dev(input, "class", "form-control");
     			attr_dev(input, "id", "titel");
     			attr_dev(input, "type", "text");
-    			add_location(input, file$1, 41, 20, 1526);
+    			add_location(input, file$1, 45, 20, 1615);
     			attr_dev(div0, "class", "col");
-    			add_location(div0, file$1, 39, 16, 1418);
+    			add_location(div0, file$1, 43, 16, 1507);
     			attr_dev(div1, "class", "row mb-3");
-    			add_location(div1, file$1, 38, 12, 1379);
+    			add_location(div1, file$1, 42, 12, 1468);
     			attr_dev(button, "type", "button");
     			attr_dev(button, "class", "btn btn-outline-secondary");
-    			add_location(button, file$1, 45, 16, 1695);
+    			add_location(button, file$1, 49, 16, 1784);
     			attr_dev(div2, "class", "d-grid gap-2");
-    			add_location(div2, file$1, 44, 12, 1652);
+    			add_location(div2, file$1, 48, 12, 1741);
     			attr_dev(form, "class", "mb-5 form-group");
-    			add_location(form, file$1, 37, 8, 1336);
+    			add_location(form, file$1, 41, 8, 1425);
     			attr_dev(div3, "class", "shadow-sm p-3 mb-5 bg-body rounded");
-    			add_location(div3, file$1, 35, 4, 1232);
+    			add_location(div3, file$1, 39, 4, 1321);
     			attr_dev(th0, "scope", "col");
-    			add_location(th0, file$1, 57, 16, 2083);
+    			add_location(th0, file$1, 61, 16, 2172);
     			attr_dev(th1, "scope", "col");
-    			add_location(th1, file$1, 58, 16, 2121);
+    			add_location(th1, file$1, 62, 16, 2210);
     			attr_dev(th2, "scope", "col");
-    			add_location(th2, file$1, 59, 16, 2159);
+    			add_location(th2, file$1, 63, 16, 2248);
     			attr_dev(th3, "scope", "col");
-    			add_location(th3, file$1, 60, 16, 2218);
+    			add_location(th3, file$1, 64, 16, 2307);
     			attr_dev(th4, "scope", "col");
-    			add_location(th4, file$1, 61, 16, 2277);
+    			add_location(th4, file$1, 65, 16, 2366);
     			attr_dev(th5, "scope", "col");
-    			add_location(th5, file$1, 62, 16, 2323);
-    			add_location(tr0, file$1, 56, 14, 2062);
-    			add_location(thead, file$1, 55, 12, 2040);
+    			add_location(th5, file$1, 66, 16, 2412);
+    			add_location(tr0, file$1, 60, 14, 2151);
+    			add_location(thead, file$1, 59, 12, 2129);
     			attr_dev(div4, "id", "icon");
-    			add_location(div4, file$1, 67, 28, 2467);
-    			add_location(td0, file$1, 67, 24, 2463);
+    			add_location(div4, file$1, 71, 28, 2556);
+    			add_location(td0, file$1, 71, 24, 2552);
     			attr_dev(div5, "id", "text");
-    			add_location(div5, file$1, 68, 28, 2522);
-    			add_location(td1, file$1, 68, 24, 2518);
+    			add_location(div5, file$1, 72, 28, 2611);
+    			add_location(td1, file$1, 72, 24, 2607);
     			attr_dev(div6, "id", "temp");
-    			add_location(div6, file$1, 69, 28, 2577);
-    			add_location(td2, file$1, 69, 24, 2573);
+    			add_location(div6, file$1, 73, 28, 2666);
+    			add_location(td2, file$1, 73, 24, 2662);
     			attr_dev(div7, "id", "feelslike");
-    			add_location(div7, file$1, 70, 28, 2632);
-    			add_location(td3, file$1, 70, 24, 2628);
+    			add_location(div7, file$1, 74, 28, 2721);
+    			add_location(td3, file$1, 74, 24, 2717);
     			attr_dev(div8, "id", "wind");
-    			add_location(div8, file$1, 71, 28, 2692);
-    			add_location(td4, file$1, 71, 24, 2688);
+    			add_location(div8, file$1, 75, 28, 2781);
+    			add_location(td4, file$1, 75, 24, 2777);
     			attr_dev(div9, "id", "humidity");
-    			add_location(div9, file$1, 72, 28, 2747);
-    			add_location(td5, file$1, 72, 24, 2743);
-    			add_location(tr1, file$1, 66, 20, 2434);
-    			add_location(tbody, file$1, 65, 12, 2406);
+    			add_location(div9, file$1, 76, 28, 2836);
+    			add_location(td5, file$1, 76, 24, 2832);
+    			add_location(tr1, file$1, 70, 20, 2523);
+    			add_location(tbody, file$1, 69, 12, 2495);
     			attr_dev(table, "class", "table shadow-sm p-3 mb-5 bg-body rounded");
-    			add_location(table, file$1, 54, 8, 1971);
+    			add_location(table, file$1, 58, 8, 2060);
     			attr_dev(div10, "class", "row row-cols-1 row-cols-md-3 g-4");
-    			add_location(div10, file$1, 53, 4, 1916);
-    		},
-    		l: function claim(nodes) {
-    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    			add_location(div10, file$1, 57, 4, 2005);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div3, anchor);
@@ -7002,26 +7000,73 @@ var app = (function () {
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(input, "input", /*input_input_handler*/ ctx[2]),
-    					listen_dev(button, "click", /*getWeather*/ ctx[1], false, false, false)
+    					listen_dev(input, "input", /*input_input_handler*/ ctx[3]),
+    					listen_dev(button, "click", /*getWeather*/ ctx[2], false, false, false)
     				];
 
     				mounted = true;
     			}
     		},
-    		p: function update(ctx, [dirty]) {
+    		p: function update(ctx, dirty) {
     			if (dirty & /*city*/ 1 && input.value !== /*city*/ ctx[0]) {
     				set_input_value(input, /*city*/ ctx[0]);
     			}
     		},
-    		i: noop$1,
-    		o: noop$1,
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div3);
     			if (detaching) detach_dev(t6);
     			if (detaching) detach_dev(div10);
     			mounted = false;
     			run_all(dispose);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block$1.name,
+    		type: "if",
+    		source: "(38:0) {#if $isAuthenticated}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment$1(ctx) {
+    	let if_block_anchor;
+    	let if_block = /*$isAuthenticated*/ ctx[1] && create_if_block$1(ctx);
+
+    	const block = {
+    		c: function create() {
+    			if (if_block) if_block.c();
+    			if_block_anchor = empty();
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			if (if_block) if_block.m(target, anchor);
+    			insert_dev(target, if_block_anchor, anchor);
+    		},
+    		p: function update(ctx, [dirty]) {
+    			if (/*$isAuthenticated*/ ctx[1]) {
+    				if (if_block) {
+    					if_block.p(ctx, dirty);
+    				} else {
+    					if_block = create_if_block$1(ctx);
+    					if_block.c();
+    					if_block.m(if_block_anchor.parentNode, if_block_anchor);
+    				}
+    			} else if (if_block) {
+    				if_block.d(1);
+    				if_block = null;
+    			}
+    		},
+    		i: noop$1,
+    		o: noop$1,
+    		d: function destroy(detaching) {
+    			if (if_block) if_block.d(detaching);
+    			if (detaching) detach_dev(if_block_anchor);
     		}
     	};
 
@@ -7039,6 +7084,12 @@ var app = (function () {
     const api_root = "http://localhost:8080";
 
     function instance$1($$self, $$props, $$invalidate) {
+    	let $jwt_token;
+    	let $isAuthenticated;
+    	validate_store(jwt_token, 'jwt_token');
+    	component_subscribe($$self, jwt_token, $$value => $$invalidate(5, $jwt_token = $$value));
+    	validate_store(isAuthenticated, 'isAuthenticated');
+    	component_subscribe($$self, isAuthenticated, $$value => $$invalidate(1, $isAuthenticated = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('Weather', slots, []);
     	let weather = { location: "", current: "" };
@@ -7049,7 +7100,8 @@ var app = (function () {
 
     		var config = {
     			method: "get",
-    			url: api_root + "/api/weather?" + query
+    			url: api_root + "/api/weather?" + query,
+    			headers: { Authorization: "Bearer " + $jwt_token }
     		};
 
     		axios(config).then(function (response) {
@@ -7084,7 +7136,9 @@ var app = (function () {
     		api_root,
     		weather,
     		city,
-    		getWeather
+    		getWeather,
+    		$jwt_token,
+    		$isAuthenticated
     	});
 
     	$$self.$inject_state = $$props => {
@@ -7096,7 +7150,7 @@ var app = (function () {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [city, getWeather, input_input_handler];
+    	return [city, $isAuthenticated, getWeather, input_input_handler];
     }
 
     class Weather extends SvelteComponentDev {
@@ -7167,7 +7221,7 @@ var app = (function () {
     const file = "src/App.svelte";
 
     // (14:3) {#if $isAuthenticated}
-    function create_if_block_3(ctx) {
+    function create_if_block_4(ctx) {
     	let li;
     	let a;
 
@@ -7193,7 +7247,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_3.name,
+    		id: create_if_block_4.name,
     		type: "if",
     		source: "(14:3) {#if $isAuthenticated}",
     		ctx
@@ -7203,7 +7257,7 @@ var app = (function () {
     }
 
     // (17:3) {#if $isAuthenticated}
-    function create_if_block_2(ctx) {
+    function create_if_block_3(ctx) {
     	let li;
     	let a;
 
@@ -7229,7 +7283,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_2.name,
+    		id: create_if_block_3.name,
     		type: "if",
     		source: "(17:3) {#if $isAuthenticated}",
     		ctx
@@ -7239,7 +7293,7 @@ var app = (function () {
     }
 
     // (20:3) {#if $isAuthenticated}
-    function create_if_block_1(ctx) {
+    function create_if_block_2(ctx) {
     	let li;
     	let a;
     	let svg;
@@ -7293,7 +7347,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_1.name,
+    		id: create_if_block_2.name,
     		type: "if",
     		source: "(20:3) {#if $isAuthenticated}",
     		ctx
@@ -7302,7 +7356,42 @@ var app = (function () {
     	return block;
     }
 
-    // (36:4) {:else}
+    // (26:3) {#if $isAuthenticated}
+    function create_if_block_1(ctx) {
+    	let li;
+    	let a;
+
+    	const block = {
+    		c: function create() {
+    			li = element("li");
+    			a = element("a");
+    			a.textContent = "Wetterprognoze";
+    			attr_dev(a, "class", "nav-link float-left");
+    			attr_dev(a, "href", "#/weather");
+    			add_location(a, file, 26, 7, 1430);
+    			add_location(li, file, 26, 3, 1426);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, li, anchor);
+    			append_dev(li, a);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(li);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_1.name,
+    		type: "if",
+    		source: "(26:3) {#if $isAuthenticated}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (38:4) {:else}
     function create_else_block(ctx) {
     	let button;
     	let mounted;
@@ -7314,7 +7403,7 @@ var app = (function () {
     			button.textContent = "Log In";
     			attr_dev(button, "type", "button");
     			attr_dev(button, "class", "btn btn-outline-secondary");
-    			add_location(button, file, 36, 5, 1746);
+    			add_location(button, file, 38, 5, 1781);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, button, anchor);
@@ -7336,14 +7425,14 @@ var app = (function () {
     		block,
     		id: create_else_block.name,
     		type: "else",
-    		source: "(36:4) {:else}",
+    		source: "(38:4) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (29:4) {#if $isAuthenticated}
+    // (31:4) {#if $isAuthenticated}
     function create_if_block(ctx) {
     	let span;
     	let t0_value = /*$user*/ ctx[2].name + "";
@@ -7361,10 +7450,10 @@ var app = (function () {
     			button = element("button");
     			button.textContent = "Log Out";
     			attr_dev(span, "class", "navbar-text me-2");
-    			add_location(span, file, 29, 5, 1551);
+    			add_location(span, file, 31, 5, 1586);
     			attr_dev(button, "type", "button");
     			attr_dev(button, "class", "btn btn-outline-secondary");
-    			add_location(button, file, 30, 5, 1609);
+    			add_location(button, file, 32, 5, 1644);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, span, anchor);
@@ -7393,7 +7482,7 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(29:4) {#if $isAuthenticated}",
+    		source: "(31:4) {#if $isAuthenticated}",
     		ctx
     	});
 
@@ -7405,23 +7494,22 @@ var app = (function () {
     	let nav;
     	let div1;
     	let ul;
-    	let li0;
-    	let a0;
+    	let li;
+    	let a;
     	let t1;
     	let t2;
     	let t3;
     	let t4;
-    	let li1;
-    	let a1;
-    	let t6;
+    	let t5;
     	let div0;
-    	let t7;
+    	let t6;
     	let div2;
     	let router;
     	let current;
-    	let if_block0 = /*$isAuthenticated*/ ctx[0] && create_if_block_3(ctx);
-    	let if_block1 = /*$isAuthenticated*/ ctx[0] && create_if_block_2(ctx);
-    	let if_block2 = /*$isAuthenticated*/ ctx[0] && create_if_block_1(ctx);
+    	let if_block0 = /*$isAuthenticated*/ ctx[0] && create_if_block_4(ctx);
+    	let if_block1 = /*$isAuthenticated*/ ctx[0] && create_if_block_3(ctx);
+    	let if_block2 = /*$isAuthenticated*/ ctx[0] && create_if_block_2(ctx);
+    	let if_block3 = /*$isAuthenticated*/ ctx[0] && create_if_block_1(ctx);
 
     	function select_block_type(ctx, dirty) {
     		if (/*$isAuthenticated*/ ctx[0]) return create_if_block;
@@ -7429,7 +7517,7 @@ var app = (function () {
     	}
 
     	let current_block_type = select_block_type(ctx);
-    	let if_block3 = current_block_type(ctx);
+    	let if_block4 = current_block_type(ctx);
     	router = new Router({ props: { routes }, $$inline: true });
 
     	const block = {
@@ -7438,9 +7526,9 @@ var app = (function () {
     			nav = element("nav");
     			div1 = element("div");
     			ul = element("ul");
-    			li0 = element("li");
-    			a0 = element("a");
-    			a0.textContent = "Home";
+    			li = element("li");
+    			a = element("a");
+    			a.textContent = "Home";
     			t1 = space();
     			if (if_block0) if_block0.c();
     			t2 = space();
@@ -7448,33 +7536,27 @@ var app = (function () {
     			t3 = space();
     			if (if_block2) if_block2.c();
     			t4 = space();
-    			li1 = element("li");
-    			a1 = element("a");
-    			a1.textContent = "Wetterprognoze";
-    			t6 = space();
+    			if (if_block3) if_block3.c();
+    			t5 = space();
     			div0 = element("div");
-    			if_block3.c();
-    			t7 = space();
+    			if_block4.c();
+    			t6 = space();
     			div2 = element("div");
     			create_component(router.$$.fragment);
-    			attr_dev(a0, "class", "navbar-brand float-left");
-    			attr_dev(a0, "href", "#/");
-    			add_location(a0, file, 12, 7, 368);
-    			add_location(li0, file, 12, 3, 364);
-    			attr_dev(a1, "class", "nav-link float-left");
-    			attr_dev(a1, "href", "#/weather");
-    			add_location(a1, file, 25, 7, 1404);
-    			add_location(li1, file, 25, 3, 1400);
+    			attr_dev(a, "class", "navbar-brand float-left");
+    			attr_dev(a, "href", "#/");
+    			add_location(a, file, 12, 7, 368);
+    			add_location(li, file, 12, 3, 364);
     			attr_dev(ul, "class", "navbar-nav me-auto mb-2 mb-lg-0");
     			add_location(ul, file, 10, 3, 315);
     			attr_dev(div0, "class", "d-flex float-end");
-    			add_location(div0, file, 27, 3, 1488);
+    			add_location(div0, file, 29, 3, 1523);
     			attr_dev(div1, "class", "container-fluid d-grid gap-2 d-md-flex");
     			add_location(div1, file, 9, 2, 259);
     			attr_dev(nav, "class", "navbar navbar-expand-lg bg-light");
     			add_location(nav, file, 8, 1, 210);
     			attr_dev(div2, "class", "container");
-    			add_location(div2, file, 46, 1, 1912);
+    			add_location(div2, file, 48, 1, 1947);
     			attr_dev(div3, "id", "app");
     			add_location(div3, file, 7, 0, 194);
     		},
@@ -7486,8 +7568,8 @@ var app = (function () {
     			append_dev(div3, nav);
     			append_dev(nav, div1);
     			append_dev(div1, ul);
-    			append_dev(ul, li0);
-    			append_dev(li0, a0);
+    			append_dev(ul, li);
+    			append_dev(li, a);
     			append_dev(ul, t1);
     			if (if_block0) if_block0.m(ul, null);
     			append_dev(ul, t2);
@@ -7495,12 +7577,11 @@ var app = (function () {
     			append_dev(ul, t3);
     			if (if_block2) if_block2.m(ul, null);
     			append_dev(ul, t4);
-    			append_dev(ul, li1);
-    			append_dev(li1, a1);
-    			append_dev(div1, t6);
+    			if (if_block3) if_block3.m(ul, null);
+    			append_dev(div1, t5);
     			append_dev(div1, div0);
-    			if_block3.m(div0, null);
-    			append_dev(div3, t7);
+    			if_block4.m(div0, null);
+    			append_dev(div3, t6);
     			append_dev(div3, div2);
     			mount_component(router, div2, null);
     			current = true;
@@ -7508,7 +7589,7 @@ var app = (function () {
     		p: function update(ctx, [dirty]) {
     			if (/*$isAuthenticated*/ ctx[0]) {
     				if (if_block0) ; else {
-    					if_block0 = create_if_block_3(ctx);
+    					if_block0 = create_if_block_4(ctx);
     					if_block0.c();
     					if_block0.m(ul, t2);
     				}
@@ -7519,7 +7600,7 @@ var app = (function () {
 
     			if (/*$isAuthenticated*/ ctx[0]) {
     				if (if_block1) ; else {
-    					if_block1 = create_if_block_2(ctx);
+    					if_block1 = create_if_block_3(ctx);
     					if_block1.c();
     					if_block1.m(ul, t3);
     				}
@@ -7532,7 +7613,7 @@ var app = (function () {
     				if (if_block2) {
     					if_block2.p(ctx, dirty);
     				} else {
-    					if_block2 = create_if_block_1(ctx);
+    					if_block2 = create_if_block_2(ctx);
     					if_block2.c();
     					if_block2.m(ul, t4);
     				}
@@ -7541,15 +7622,26 @@ var app = (function () {
     				if_block2 = null;
     			}
 
-    			if (current_block_type === (current_block_type = select_block_type(ctx)) && if_block3) {
-    				if_block3.p(ctx, dirty);
-    			} else {
-    				if_block3.d(1);
-    				if_block3 = current_block_type(ctx);
-
-    				if (if_block3) {
+    			if (/*$isAuthenticated*/ ctx[0]) {
+    				if (if_block3) ; else {
+    					if_block3 = create_if_block_1(ctx);
     					if_block3.c();
-    					if_block3.m(div0, null);
+    					if_block3.m(ul, null);
+    				}
+    			} else if (if_block3) {
+    				if_block3.d(1);
+    				if_block3 = null;
+    			}
+
+    			if (current_block_type === (current_block_type = select_block_type(ctx)) && if_block4) {
+    				if_block4.p(ctx, dirty);
+    			} else {
+    				if_block4.d(1);
+    				if_block4 = current_block_type(ctx);
+
+    				if (if_block4) {
+    					if_block4.c();
+    					if_block4.m(div0, null);
     				}
     			}
     		},
@@ -7567,7 +7659,8 @@ var app = (function () {
     			if (if_block0) if_block0.d();
     			if (if_block1) if_block1.d();
     			if (if_block2) if_block2.d();
-    			if_block3.d();
+    			if (if_block3) if_block3.d();
+    			if_block4.d();
     			destroy_component(router);
     		}
     	};
