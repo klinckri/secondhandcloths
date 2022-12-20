@@ -10,12 +10,10 @@ import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ch.zhaw.secondhandcloths.model.Inserat;
-import ch.zhaw.secondhandcloths.model.KaufDTO;
 import ch.zhaw.secondhandcloths.service.KaufService;
 
 @RestController

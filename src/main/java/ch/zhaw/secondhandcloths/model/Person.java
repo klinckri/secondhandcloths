@@ -1,6 +1,5 @@
 package ch.zhaw.secondhandcloths.model;
 
-import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Getter;
@@ -14,7 +13,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @RequiredArgsConstructor
 @Document("person")
 public class Person {
