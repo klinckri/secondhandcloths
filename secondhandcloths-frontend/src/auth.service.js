@@ -27,20 +27,6 @@ async function loginWithPopup() {
   } 
 }
 
-async function userCheck() {
-  var config = {
-      method: "post",
-      url: api_root + "/api/person/loginCheck",
-      headers: {},
-      data: user.email,
-  };
-
-  axios(config)
-      .catch(function (error) {
-          console.log(error);
-      });
-}
-
 function logout() {
   return auth0Client.logout();
 }
