@@ -30,7 +30,7 @@ public class InseratController {
     @PostMapping(value = "/inserieren")
     public ResponseEntity<Inserat> createInserat(
             @ModelAttribute InseratDTO inseratDTO, @AuthenticationPrincipal Jwt jwt) throws IOException {
-        String userEmail = jwt.getClaimAsString("email");
+        String userEmail = getEmail(jwt);
         Inserat inserat = inseratService.createInserat(inseratDTO, userEmail);
         return new ResponseEntity<>(inserat, HttpStatus.CREATED);
     }
@@ -47,20 +47,24 @@ public class InseratController {
 
     @GetMapping("/person")
     public ResponseEntity<List<Inserat>> getAllInserateFromPerson(@AuthenticationPrincipal Jwt jwt) {
-        String userEmail = jwt.getClaimAsString("email");
+        String userEmail = getEmail(jwt);
         List<Inserat> inserate = inseratService.getAllInserateFromPerson(userEmail);
         return new ResponseEntity<>(inserate, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteInserat(@PathVariable String id, @AuthenticationPrincipal Jwt jwt) {
-        String userEmail = jwt.getClaimAsString("email");
+        String userEmail = getEmail(jwt);
 
         if (!inseratService.validateUserOnInserat(userEmail, id) && !UserValidator.userHasRole(jwt, "admin")) {
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
         inseratService.deleteInserat(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    private String getEmail(Jwt jwt) {
+        return jwt.getClaimAsString("email");
     }
 
 }

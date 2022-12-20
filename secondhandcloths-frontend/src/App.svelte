@@ -11,6 +11,7 @@
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
 			<li><a class="navbar-brand float-left" href="#/">Home</a></li>
+			<li><a class="nav-link float-left" href="#/">Alle Inserate</a></li>
 			{#if $isAuthenticated}
 					<li><a class="nav-link float-left" aria-current="page" href="#/account">Account</a></li>
 			{/if}
