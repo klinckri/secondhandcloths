@@ -28,7 +28,7 @@ public class KaufService {
     private KaufRepository kaufRepository;
 
     public void removeItemFromBasket(String inseratId, String email) {
-        if (nonNull(inseratId) && nonNull(email)) {
+        if (nonNull(inseratId) || nonNull(email)) {
             Optional<Inserat> inserat = inseratRepository.findById(inseratId);
             Person person = personLookup(email);
             if (!inserat.isPresent()) {
@@ -42,12 +42,14 @@ public class KaufService {
             inserat.get().setInseratState(InseratStateEnum.INSERIERT);
             personRepository.save(person);
             inseratRepository.save(inserat.get());
+        } else {
+            throw new RuntimeException("Invalid input");
         }
 
     }
 
     public void addToWarenkorb(String inseratId, String email) {
-        if (nonNull(inseratId) && nonNull(email)) {
+        if (nonNull(inseratId) || nonNull(email)) {
             Optional<Inserat> inserat = inseratRepository.findById(inseratId);
             Person person = personLookup(email);
             if (!inserat.isPresent()) {
@@ -57,6 +59,8 @@ public class KaufService {
             person.getWarenkorb().add(inserat.get());
             inseratRepository.save(inserat.get());
             personRepository.save(person);
+        } else {
+            throw new RuntimeException("Invalid input");
         }
 
     }
