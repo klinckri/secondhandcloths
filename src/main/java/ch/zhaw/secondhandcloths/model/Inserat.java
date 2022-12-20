@@ -24,8 +24,6 @@ public class Inserat {
     @NonNull
     private Double preis;
     @NonNull
-    private String iban;
-    @NonNull
     private KategorieEnum kategorie;
     @NonNull
     private Person personId;

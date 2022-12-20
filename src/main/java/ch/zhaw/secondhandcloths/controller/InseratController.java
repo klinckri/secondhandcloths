@@ -56,7 +56,7 @@ public class InseratController {
     public ResponseEntity<Void> deleteInserat(@PathVariable String id, @AuthenticationPrincipal Jwt jwt) {
         String userEmail = jwt.getClaimAsString("email");
 
-        if (inseratService.validateUserOnInserat(userEmail, id) && !UserValidator.userHasRole(jwt, "admin")) {
+        if (!inseratService.validateUserOnInserat(userEmail, id) && !UserValidator.userHasRole(jwt, "admin")) {
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
         inseratService.deleteInserat(id);

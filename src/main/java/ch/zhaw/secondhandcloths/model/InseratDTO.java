@@ -16,7 +16,6 @@ public class InseratDTO implements Serializable{
     private String titel;
     private String beschreibung;
     private double preis;
-    private String iban;
     private KategorieEnum kategorie;
     private MultipartFile file;
 }
