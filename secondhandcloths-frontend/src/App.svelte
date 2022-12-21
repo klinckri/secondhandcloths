@@ -13,7 +13,7 @@
 			<li><a class="navbar-brand float-left" href="#/">Home</a></li>
 			<li><a class="nav-link float-left" href="#/">Alle Inserate</a></li>
 			{#if $isAuthenticated}
-					<li><a class="nav-link float-left" aria-current="page" href="#/account">Account</a></li>
+					<li><a class="nav-link float-left" aria-current="page" href="#/account">Meine Account Details</a></li>
 			{/if}
 			{#if $isAuthenticated}
 					<li><a class="nav-link float-left" aria-current="page" href="#/inseratErstellen">Inserat erstellen</a></li>
@@ -25,7 +25,7 @@
 						  </svg> Mein Warenkorb <span class="badge bg-secondary">{$anzahlInserate}</span></a></li>
 			{/if}
 			{#if $isAuthenticated}
-			<li><a class="nav-link float-left" href="#/weather">Wetterprognoze</a></li>
+			<li><a class="nav-link float-left" href="#/weather">Wetterprognose</a></li>
 			{/if}
 			</ul>
 			<div class="d-flex float-end">
