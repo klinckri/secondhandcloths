@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -33,7 +34,10 @@ public class KaufServiceTest {
 
     @BeforeAll
     void setup() {
-        personRepository.deleteAll();
+        Optional<Person> pers = personRepository.findByEmail("test@test.com");
+        if(pers.isPresent()) {
+            personRepository.delete(pers.get());
+        }
         p = personRepository.save(new Person("test@test.com"));
         inserat = inseratRepository.save(new Inserat("Test 1", "Beschreibung 1", 32.45, KategorieEnum.ANDERE, p, "test.jpg"));
     }
@@ -76,5 +80,15 @@ public class KaufServiceTest {
         assertThrows(RuntimeException.class, () -> kaufService.removeItemFromBasket(null, "fail@fail.com"));
         assertThrows(RuntimeException.class, () -> kaufService.removeItemFromBasket(inserat.getId(), "fail@fail.com"));
         assertThrows(RuntimeException.class, () -> kaufService.removeItemFromBasket("1234", "test@test.com"));
+    }
+
+
+    @Test
+    void testArtikelKaufen() {
+        Inserat i = inseratRepository.save(new Inserat("Test 1", "Beschreibung 1", 32.45, KategorieEnum.ANDERE, p, "test.jpg"));
+        kaufService.addToWarenkorb(i.getId(), "test@test.com");
+        kaufService.artikelKaufen("test@test.com");
+        Optional<Inserat> foundInserat = inseratRepository.findById(i.getId());
+        assertEquals(foundInserat.get().getInseratState(), InseratStateEnum.VERKAUFT);
     }
 }

@@ -55,27 +55,15 @@ public class KaufService {
 
     }
 
-    // is coming in a next stage
-    /*
-    public void artikelKaufen(KaufDTO kaufDTO) {
-        List<Inserat> inserate = new ArrayList<>();
-        List<String> errors = new ArrayList<>();
-        for (String inserat : kaufDTO.getInserate()) {
-            Optional<Inserat> foundInserat = inseratRepository.findById(inserat);
-            if (foundInserat.isPresent()) {
-                inserate.add(foundInserat.get());
-            } else {
-                errors.add("Artikel: " + inserat + " konnte nicht gefunden werden oder ist bereits verkauft.");
-            }
+    public void artikelKaufen(String email) {
+        Person person = personLookup(email);
+        for (Inserat inserat : person.getWarenkorb()) {
+            inserat.setInseratState(InseratStateEnum.VERKAUFT);
+            inseratRepository.save(inserat);
         }
-        Optional<Person> person = personRepository.findById(kaufDTO.getPersonId());
-        if (person.isPresent()) {
-            Kauf kauf = new Kauf(person.get(), inserate);
-            kaufRepository.save(kauf);
-        } else {
-            errors.add("Sie sind nicht eingeloggt.");
-        }
-    } */
+        person.getWarenkorb().clear();
+        personRepository.save(person);
+    }
 
     public List<Inserat> basketOfUser(String email) {
         Person person = personLookup(email);

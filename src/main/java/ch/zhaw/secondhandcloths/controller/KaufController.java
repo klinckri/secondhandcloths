@@ -23,12 +23,13 @@ public class KaufController {
     @Autowired 
     private KaufService kaufService;
 
-    /*@PostMapping("")
+    @PostMapping("")
     public ResponseEntity<Void> artikelKaufen(
-            @RequestBody KaufDTO kaufDTO) {
-        kaufService.artikelKaufen(kaufDTO);
+        @AuthenticationPrincipal Jwt jwt) {
+        String userEmail = getEmail(jwt);
+        kaufService.artikelKaufen(userEmail);
         return new ResponseEntity<>(HttpStatus.OK);
-    }*/
+    }
 
     @GetMapping("/warenkorb")
     public ResponseEntity<List<Inserat>> warenkorb(@AuthenticationPrincipal Jwt jwt) {
