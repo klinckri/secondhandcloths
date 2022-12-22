@@ -28,11 +28,7 @@ public class KaufService {
             if (!inserat.isPresent()) {
                 throw new RuntimeException("Cannot find inserat");
             }
-            List<Inserat> warenkorb = person.getWarenkorb();
-            person.getWarenkorb().clear();
-            personRepository.save(person);
-            warenkorb.remove(inserat.get());
-            person.setWarenkorb(warenkorb);
+            person.getWarenkorb().removeIf(w -> w.getId().equals(inserat.get().getId()));
             inserat.get().setInseratState(InseratStateEnum.INSERIERT);
             personRepository.save(person);
             inseratRepository.save(inserat.get());

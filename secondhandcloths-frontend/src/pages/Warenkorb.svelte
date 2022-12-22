@@ -2,7 +2,7 @@
     import axios from "axios";
     import { isAuthenticated, jwt_token, anzahlInserate } from "../store";
 
-    const api_root = "http://localhost:8080";
+    const api_root = window.location.origin;
 
     let inserate = [];
 

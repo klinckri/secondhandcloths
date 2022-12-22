@@ -1,9 +1,9 @@
 import createAuth0Client from "@auth0/auth0-spa-js";
-import { user, isAuthenticated, jwt_token } from "./store";
+import { user, isAuthenticated, jwt_token, anzahlInserate } from "./store";
 import config from "./auth.config";
 
 let auth0Client;
-const api_root = "http://localhost:8080";
+const api_root = window.location.origin;
 
 async function createClient() {
   auth0Client = await createAuth0Client({
@@ -22,9 +22,26 @@ async function loginWithPopup() {
     jwt_token.set(id_token);
     console.log(id_token);
     isAuthenticated.set(true);
+    getWarenkorbSize();
   } catch (e) {
     console.error(e);
   } 
+}
+
+function getWarenkorbSize() {
+  var config = {
+      method: "get",
+      url: api_root + "/api/kauf/warenkorbSize",
+      headers: { Authorization: "Bearer " + jwt_token },
+  };
+
+  axios(config)
+      .then(function (response) {
+          anzahlInserate.set(response.data);
+      })
+      .catch(function (error) {
+          console.log(error);
+      });
 }
 
 function logout() {

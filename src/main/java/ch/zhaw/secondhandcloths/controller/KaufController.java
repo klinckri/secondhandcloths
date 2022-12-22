@@ -32,29 +32,33 @@ public class KaufController {
 
     @GetMapping("/warenkorb")
     public ResponseEntity<List<Inserat>> warenkorb(@AuthenticationPrincipal Jwt jwt) {
-        String userEmail = jwt.getClaimAsString("email");
+        String userEmail = getEmail(jwt);
         List<Inserat> inserate = kaufService.basketOfUser(userEmail);
         return new ResponseEntity<>(inserate, HttpStatus.OK);
     }
 
     @GetMapping("/warenkorbSize")
     public ResponseEntity<Integer> warenkorbSize(@AuthenticationPrincipal Jwt jwt) {
-        String userEmail = jwt.getClaimAsString("email");
+        String userEmail = getEmail(jwt);
         List<Inserat> inserate = kaufService.basketOfUser(userEmail);
         return new ResponseEntity<>(inserate.size(), HttpStatus.OK);
     }
 
     @PostMapping("/removeFromBasket/{id}")
     public ResponseEntity<Void> removeFromBasket(@PathVariable String id, @AuthenticationPrincipal Jwt jwt) {
-        String userEmail = jwt.getClaimAsString("email");
+        String userEmail = getEmail(jwt);
         kaufService.removeItemFromBasket(id, userEmail);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping("/addToWarenkorb/{id}")
     public ResponseEntity<Void> addToWarenkorb(@PathVariable String id, @AuthenticationPrincipal Jwt jwt) {
-        String userEmail = jwt.getClaimAsString("email");
+        String userEmail = getEmail(jwt);
         kaufService.addToWarenkorb(id, userEmail);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    private String getEmail(Jwt jwt) {
+        return jwt.getClaimAsString("email");
     }
 }
