@@ -83,7 +83,7 @@
 {#if $isAuthenticated}
     <h2>Mein Warenkorb</h2>
 
-    <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="shadow-sm p-3 mb-5 bg-body rounded">
         <table class="table shadow-sm p-3 mb-5 bg-body rounded">
             <thead>
                 <tr>
@@ -135,6 +135,8 @@
                 {/each}
             </tbody>
         </table>
-        <button class="btn btn-outline-secondary" on:click={artikelKaufen}>Kaufen</button>
+        <div class="d-grid gap-3">
+            <button class="btn btn-outline-secondary" on:click={artikelKaufen}>Kaufen</button>
+        </div>
     </div>
 {/if}
